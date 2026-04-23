@@ -1,0 +1,105 @@
+Topic n Sub Topics:-
+
+  1. Algorithm
+  2. Measuring Performance
+  3. Time & Space Complexity
+  4. Big O Notation
+  5. Math Algorithms
+  6. Sort
+  7. Search
+  8. Misc. algorithms and problem solving
+
+1. Algorithm
+An algorithm is a set of well-defined instructions to solve a particular problem.
+
+- Characteristics
+. well defined inputs and outputs
+. each step should be clear and unambiguous
+. Language independent
+
+- why algorithms
+. as a developer, one is going to come across problems that needs to be solved
+. learning algorithm translates to learning different techniques to efficiently solve those problems
+. one problem can be solved in many ways using different algorithms
+. every algorithm comes with its own tradeoffs when it comes to performance
+
+2. Measuring Performance
+The absolute running time of an algorithm cannot be predicted, since it depends on a number of factors
+- programming language used to implement the algorithm
+- the computer the program runs on
+- other programs running at the same time
+- quality of the operating system
+
+NB:- the performance of an algorithm is evaluated "in terms of its input size"
+
+3. Time and Space Complexity
+- Time complexity:- amount of time taken by an algorithm to run, as a function of input size
+- Space complexity:- amount of memory taken by an algorithm to run, as a function of input size
+
+by evaluating against the input size, the analysis is not only machine independent but the comparison is also more appropriate
+
+there is no one solution that works every single time. it is always good to know multiple ways to solve the problem and use the best solution, given your constraints
+
+if your app needs to be very quick and has plenty of memory to work with, you don't have to worry about space complexity
+
+if you have very little memory to work with, you should pick a solution that is relatively slower but needs less space
+
+- How to represent complexity?
+. Asymptotic notations
+  - mathematical tools to represent time and space complexity
+  (1) Big-O Notation - Worst case complexity *
+  (2) Omega Notation - Best case complexity
+  (3) Theta Notation - Average case complexity
+
+4. Big-O Notation
+The worst case complexity of an algorithm is represented using the Big-O notation
+Big-O notation describes the complexity of an algorithm using algebraic terms
+
+It has two important characteristics:-
+  . It is expressed in terms of the input
+  . It focuses on the bigger picture without getting caught up in the minute details
+
+example 1: an algorithm implement in a program function (loop version):
+`
+  (js)
+  function summation(n) {
+    let sum = 0;
+    for(let i = 1; i <= n; i++){
+      sum += i
+    }
+    return sum;
+  }
+
+  [analysis]
+  step 1: count the number of times a statement executes based on the input size
+    "let sum = 0" runs once -> 1
+    "for loop" runs as a function of its condition 'n' (e.g if 'n' = 3) runs thrice -> 3
+    "return sum" runs once -> 1
+
+    :. 3 + 2 = n + 2 (since n is 3, and the reason why the loop runs thrice)
+
+  step 2: focus on the bigger picture without getting caught up in the minute details
+    "n + 2" - n here is bigger picture here, if n is 100, it'll be  "100 + 2", hence 'n' is the bigger picture here
+
+  step 3: final review - time complexity can be said to "Big-O of (n)" same as "O(n)"
+
+ mathematically: O(n) - Linear
+ the time complexity of the algorithm implemented in the function above can be said to be "O(n) - Linear", as the input doubles, time roughly doubles.
+`
+
+example 2: an algorithm implement in a program function (formula version):
+`
+function summation(n){
+  return((n*(n+1))/2);
+}
+[analysis]
+  step 1: count the number of times a statement executes based on the input size
+    "return((n*(n+1))/2);" runs once -> 1
+
+  step 2: focus on the bigger picture without getting caught up in the minute details
+    regardless of how large 'n' gets, only one statement get executes. the input size has no effect on the number of steps
+
+  step 3: final review - time complexity can be said to "Big-O of (1)" same as "O(1)"
+ mathematically: O(1) - Constant
+ the time complexity of the algorithm implemented in the function above can be said to be "O(1) - Constant", No matter the input size, time stays the same.
+`

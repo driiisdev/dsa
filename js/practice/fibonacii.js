@@ -39,6 +39,7 @@ Use two variables to track only the last two values instead of an array—saves 
 
 
 var fib = {
+
   // Recursive Approach (slow, not recommended for large "n" due to inefficiency, and it can lead to stack overflow for large "n") 
   fibRec: function(n) {
     if (n === 0) {
@@ -63,6 +64,15 @@ var fib = {
     }
     return b;
   },
+
+  // Dynamic Programming (Memoization) Approach (efficient, recommended for large "n")
+  fibMemo: function(n, memo = {}) {
+    if (n in memo) return memo[n];
+    if (n === 0) return 0;
+    if (n === 1) return 1;
+    memo[n] = this.fibMemo(n - 1, memo) + this.fibMemo(n - 2, memo);
+    return memo[n];
+  }
 
 };
 
