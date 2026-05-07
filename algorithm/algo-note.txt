@@ -103,3 +103,136 @@ function summation(n){
  mathematically: O(1) - Constant
  the time complexity of the algorithm implemented in the function above can be said to be "O(1) - Constant", No matter the input size, time stays the same.
 `
+
+example of two nested  loop function:
+`
+for (i = 1; i <= n; i++) {
+  for (j = 1; j <= i; j++) {
+    //statement of the code to be executed
+  }
+}
+`
+[analysis]
+time complexity : the loop is nested just twice, hence input gets ??run or loop?? twice "n^2"
+function/program with such algorithm is said to be quadratic - O(n^2) with formula ~ 3n^2 + 5n + 1. the less dominant in the formula is "5n + 1"
+
+example of three nested  loop function:
+`
+for (i = 1; i <= n; i++) {
+  for (j = 1; j <= i; j++) {
+    for (k = 1; k <= j; k++) {
+      //statement of the code to be executed
+    }
+  }
+}
+`
+[analysis]
+time complexity : the loop is nested just thrice, hence input gets ??run or loop?? thrice "n^3"
+function/program with such algorithm is said to be cubic - O(n^3) with formula ~ n^3 + 3n^2 + 5n + 1. the less dominant in the formula is "3n^2 + 5n + 1"
+
+example: logarithmic algorithm implemented in a function (loop version)
+`
+function logExample(n){
+  let i = 1;
+
+  while(i <= n){
+    i = i * 2;
+  }
+}
+`
+[analysis]
+step 1: count the number of times a statement executes based on the input size
+
+The key statement is:
+
+i = i * 2;
+
+Let’s track how i grows:
+
+1st run → i = 2
+2nd run → i = 4
+3rd run → i = 8
+4th run → i = 16
+...
+
+So after k runs:
+
+i = 2^k
+
+Loop stops when:
+
+2^k >= n
+
+step 2: focus on the bigger picture without getting caught up in the minute details
+
+We solve:
+
+2^k >= n
+
+Take log on both sides:
+
+k ≈ log₂(n)
+
+So the loop runs about log(n) times.
+
+As n grows, the number of steps increases very slowly because we keep doubling.
+
+step 3: final review
+
+Time complexity can be said to:
+
+O(log n)
+
+mathematically: O(log n) – Logarithmic
+
+The time complexity of the algorithm implemented in the function above can be said to be "O(log n) - Logarithmic", because the input size is reduced (or grows) exponentially each step, so the number of operations increases slowly as n increases.
+
+space complexity:
+O(1) - Constant
+-> if the algorithm doesnot need extra memory, or the memory needed doesnot depends on the input size, space complexity is said to be Constant.
+O(n) - Linear
+-> if the extra space need by the algorithm grows as the input size grows, the space complexity is said to be Linear.
+O(logn) - Logarithmic
+-> if the extra space need by the algorithm grows or reduces as the input size grows or reduces exponentially, the space complexity is said to be logarithmic.
+
+nb: quadratic/ cubic space complexity should be avoided when possible.
+
+Ponits to note
+multiple algorithms exist  for the same problem and there is no one right solution. different algorithms work well under different constraints.
+
+the same algorithm with the same programming language can be implemented in different ways
+
+when writing programs at work, dont lose sight of the bigger picture. rather than writing clever code, wriete code that is simple to read and maintain.
+
+objects -big O
+an object is a collection of key value pairs
+object method and time complexity
+insert - o(1)
+remove - o(1)
+access - o(1)
+search - o(n)
+object.keys() - o(n)
+object.values() - o(n)
+object.entries() - o(n)
+
+array - big O
+an array is an ordered collection of values
+insert/remove at end - o(1)
+insert/remove at beginning - o(n)
+access - o(1)
+search - o(n)
+push/pop - o(1)
+shift/unshift/concat/slice/splice - o(n)
+forEach/map/filter/reduce - o(n)
+
+
+5. math algorithms
+related problem:
+fibonacci sequence
+factorial of a number
+prime number
+power of two
+recursion
+fibonacci sequence with recursion
+factorial of a number with recursion
+
