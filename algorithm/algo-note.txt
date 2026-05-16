@@ -1,137 +1,165 @@
-Topic n Sub Topics:-
+# Algorithms
 
-  1. Algorithm
-  2. Measuring Performance
-  3. Time & Space Complexity
-  4. Big O Notation
-  5. Math Algorithms
-  6. Sort
-  7. Search
-  8. Misc. algorithms and problem solving
+## Topics
 
-1. Algorithm
+1. [Algorithm](#1-algorithm)
+2. [Measuring Performance](#2-measuring-performance)
+3. [Time & Space Complexity](#3-time--space-complexity)
+4. [Big O Notation](#4-big-o-notation)
+5. [Math Algorithms](#5-math-algorithms)
+6. [Sort](#6-sort)
+7. [Search](#7-search)
+8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
+
+---
+
+## 1. Algorithm
+
 An algorithm is a set of well-defined instructions to solve a particular problem.
 
-- Characteristics
-. well defined inputs and outputs
-. each step should be clear and unambiguous
-. Language independent
+### Characteristics
 
-- why algorithms
-. as a developer, one is going to come across problems that needs to be solved
-. learning algorithm translates to learning different techniques to efficiently solve those problems
-. one problem can be solved in many ways using different algorithms
-. every algorithm comes with its own tradeoffs when it comes to performance
+- Well defined inputs and outputs
+- Each step should be clear and unambiguous
+- Language independent
 
-2. Measuring Performance
-The absolute running time of an algorithm cannot be predicted, since it depends on a number of factors
-- programming language used to implement the algorithm
-- the computer the program runs on
-- other programs running at the same time
-- quality of the operating system
+### Why Learn Algorithms?
 
-NB:- the performance of an algorithm is evaluated "in terms of its input size"
+- As a developer, you will come across problems that need to be solved
+- Learning algorithms translates to learning different techniques to efficiently solve those problems
+- One problem can be solved in many ways using different algorithms
+- Every algorithm comes with its own tradeoffs when it comes to performance
 
-3. Time and Space Complexity
-- Time complexity:- amount of time taken by an algorithm to run, as a function of input size
-- Space complexity:- amount of memory taken by an algorithm to run, as a function of input size
+---
 
-by evaluating against the input size, the analysis is not only machine independent but the comparison is also more appropriate
+## 2. Measuring Performance
 
-there is no one solution that works every single time. it is always good to know multiple ways to solve the problem and use the best solution, given your constraints
+The absolute running time of an algorithm cannot be predicted, since it depends on a number of factors:
 
-if your app needs to be very quick and has plenty of memory to work with, you don't have to worry about space complexity
+- Programming language used to implement the algorithm
+- The computer the program runs on
+- Other programs running at the same time
+- Quality of the operating system
 
-if you have very little memory to work with, you should pick a solution that is relatively slower but needs less space
+> **Note:** The performance of an algorithm is evaluated *in terms of its input size*.
 
-- How to represent complexity?
-. Asymptotic notations
-  - mathematical tools to represent time and space complexity
-  (1) Big-O Notation - Worst case complexity *
-  (2) Omega Notation - Best case complexity
-  (3) Theta Notation - Average case complexity
+---
 
-4. Big-O Notation
-The worst case complexity of an algorithm is represented using the Big-O notation
-Big-O notation describes the complexity of an algorithm using algebraic terms
+## 3. Time and Space Complexity
 
-It has two important characteristics:-
-  . It is expressed in terms of the input
-  . It focuses on the bigger picture without getting caught up in the minute details
+- **Time complexity:** Amount of time taken by an algorithm to run, as a function of input size
+- **Space complexity:** Amount of memory taken by an algorithm to run, as a function of input size
 
-example 1: an algorithm implement in a program function (loop version):
-`
-  (js)
-  function summation(n) {
-    let sum = 0;
-    for(let i = 1; i <= n; i++){
-      sum += i
-    }
-    return sum;
+By evaluating against the input size, the analysis is not only machine independent but the comparison is also more appropriate.
+
+There is no one solution that works every single time. It is always good to know multiple ways to solve the problem and use the best solution, given your constraints.
+
+- If your app needs to be very quick and has plenty of memory to work with, you don't have to worry about space complexity.
+- If you have very little memory to work with, you should pick a solution that is relatively slower but needs less space.
+
+### How to Represent Complexity?
+
+**Asymptotic Notations** - mathematical tools to represent time and space complexity:
+
+1. **Big-O Notation** - Worst case complexity
+2. **Omega Notation** - Best case complexity
+3. **Theta Notation** - Average case complexity
+
+---
+
+## 4. Big-O Notation
+
+The worst case complexity of an algorithm is represented using the Big-O notation. Big-O notation describes the complexity of an algorithm using algebraic terms.
+
+### Important Characteristics
+
+- It is expressed in terms of the input
+- It focuses on the bigger picture without getting caught up in the minute details
+
+### Example 1: Loop Version
+
+```javascript
+function summation(n) {
+  let sum = 0;
+  for(let i = 1; i <= n; i++){
+    sum += i
   }
+  return sum;
+}
+```
 
-  [analysis]
-  step 1: count the number of times a statement executes based on the input size
-    "let sum = 0" runs once -> 1
-    "for loop" runs as a function of its condition 'n' (e.g if 'n' = 3) runs thrice -> 3
-    "return sum" runs once -> 1
+**Analysis:**
 
-    :. 3 + 2 = n + 2 (since n is 3, and the reason why the loop runs thrice)
+**Step 1:** Count the number of times a statement executes based on the input size
+- `let sum = 0` runs once → 1
+- `for loop` runs as a function of its condition 'n' (e.g. if 'n' = 3) runs thrice → 3
+- `return sum` runs once → 1
+- Total: n + 2 (since n is 3, and the reason why the loop runs thrice)
 
-  step 2: focus on the bigger picture without getting caught up in the minute details
-    "n + 2" - n here is bigger picture here, if n is 100, it'll be  "100 + 2", hence 'n' is the bigger picture here
+**Step 2:** Focus on the bigger picture without getting caught up in the minute details
+- "n + 2" - n is the bigger picture here. If n is 100, it'll be "100 + 2", hence 'n' is the bigger picture.
 
-  step 3: final review - time complexity can be said to "Big-O of (n)" same as "O(n)"
+**Step 3:** Final review
+- Time complexity: **O(n) - Linear**
+- As the input doubles, time roughly doubles.
 
- mathematically: O(n) - Linear
- the time complexity of the algorithm implemented in the function above can be said to be "O(n) - Linear", as the input doubles, time roughly doubles.
-`
+### Example 2: Formula Version
 
-example 2: an algorithm implement in a program function (formula version):
-`
+```javascript
 function summation(n){
   return((n*(n+1))/2);
 }
-[analysis]
-  step 1: count the number of times a statement executes based on the input size
-    "return((n*(n+1))/2);" runs once -> 1
+```
 
-  step 2: focus on the bigger picture without getting caught up in the minute details
-    regardless of how large 'n' gets, only one statement get executes. the input size has no effect on the number of steps
+**Analysis:**
 
-  step 3: final review - time complexity can be said to "Big-O of (1)" same as "O(1)"
- mathematically: O(1) - Constant
- the time complexity of the algorithm implemented in the function above can be said to be "O(1) - Constant", No matter the input size, time stays the same.
-`
+**Step 1:** Count the number of times a statement executes based on the input size
+- `return((n*(n+1))/2);` runs once → 1
 
-example of two nested  loop function:
-`
+**Step 2:** Focus on the bigger picture without getting caught up in the minute details
+- Regardless of how large 'n' gets, only one statement gets executed. The input size has no effect on the number of steps.
+
+**Step 3:** Final review
+- Time complexity: **O(1) - Constant**
+- No matter the input size, time stays the same.
+
+### Example 3: Two Nested Loops
+
+```javascript
 for (i = 1; i <= n; i++) {
   for (j = 1; j <= i; j++) {
-    //statement of the code to be executed
+    // statement of the code to be executed
   }
 }
-`
-[analysis]
-time complexity : the loop is nested just twice, hence input gets ??run or loop?? twice "n^2"
-function/program with such algorithm is said to be quadratic - O(n^2) with formula ~ 3n^2 + 5n + 1. the less dominant in the formula is "5n + 1"
+```
 
-example of three nested  loop function:
-`
+**Analysis:**
+
+Time complexity: The loop is nested twice, hence input runs twice → **O(n²)** - Quadratic
+
+Formula: ~3n² + 5n + 1, where the less dominant terms are "5n + 1"
+
+### Example 4: Three Nested Loops
+
+```javascript
 for (i = 1; i <= n; i++) {
   for (j = 1; j <= i; j++) {
     for (k = 1; k <= j; k++) {
-      //statement of the code to be executed
+      // statement of the code to be executed
     }
   }
 }
-`
-[analysis]
-time complexity : the loop is nested just thrice, hence input gets ??run or loop?? thrice "n^3"
-function/program with such algorithm is said to be cubic - O(n^3) with formula ~ n^3 + 3n^2 + 5n + 1. the less dominant in the formula is "3n^2 + 5n + 1"
+```
 
-example: logarithmic algorithm implemented in a function (loop version)
-`
+**Analysis:**
+
+Time complexity: The loop is nested thrice, hence input runs thrice → **O(n³)** - Cubic
+
+Formula: ~n³ + 3n² + 5n + 1, where the less dominant terms are "3n² + 5n + 1"
+
+### Example 5: Logarithmic Algorithm
+
+```javascript
 function logExample(n){
   let i = 1;
 
@@ -139,100 +167,121 @@ function logExample(n){
     i = i * 2;
   }
 }
-`
-[analysis]
-step 1: count the number of times a statement executes based on the input size
+```
 
-The key statement is:
+**Analysis:**
 
-i = i * 2;
+**Step 1:** Count the number of times a statement executes based on the input size
 
-Let’s track how i grows:
+The key statement is: `i = i * 2;`
 
-1st run → i = 2
-2nd run → i = 4
-3rd run → i = 8
-4th run → i = 16
-...
+Let's track how i grows:
+- 1st run → i = 2
+- 2nd run → i = 4
+- 3rd run → i = 8
+- 4th run → i = 16
 
-So after k runs:
+After k runs: i = 2^k
 
-i = 2^k
+Loop stops when: 2^k >= n
 
-Loop stops when:
+**Step 2:** Focus on the bigger picture
 
-2^k >= n
+Solve: 2^k >= n
 
-step 2: focus on the bigger picture without getting caught up in the minute details
+Take log on both sides: k ≈ log₂(n)
 
-We solve:
+So the loop runs about log(n) times. As n grows, the number of steps increases very slowly because we keep doubling.
 
-2^k >= n
+**Step 3:** Final review
 
-Take log on both sides:
+Time complexity: **O(log n) - Logarithmic**
 
-k ≈ log₂(n)
+The input size is reduced (or grows) exponentially each step, so the number of operations increases slowly as n increases.
 
-So the loop runs about log(n) times.
+### Space Complexity Reference
 
-As n grows, the number of steps increases very slowly because we keep doubling.
+- **O(1) - Constant:** Algorithm doesn't need extra memory, or memory needed doesn't depend on input size
+- **O(n) - Linear:** Extra space needed grows as input size grows
+- **O(log n) - Logarithmic:** Extra space needed grows or reduces exponentially with input size
 
-step 3: final review
+> **Note:** Quadratic/cubic space complexity should be avoided when possible.
 
-Time complexity can be said to:
+---
 
-O(log n)
+## 5. Points to Note
 
-mathematically: O(log n) – Logarithmic
+- Multiple algorithms exist for the same problem, and there is no one right solution
+- Different algorithms work well under different constraints
+- The same algorithm with the same programming language can be implemented in different ways
+- When writing programs at work, don't lose sight of the bigger picture
+- Write code that is simple to read and maintain rather than clever code
 
-The time complexity of the algorithm implemented in the function above can be said to be "O(log n) - Logarithmic", because the input size is reduced (or grows) exponentially each step, so the number of operations increases slowly as n increases.
+---
 
-space complexity:
-O(1) - Constant
--> if the algorithm doesnot need extra memory, or the memory needed doesnot depends on the input size, space complexity is said to be Constant.
-O(n) - Linear
--> if the extra space need by the algorithm grows as the input size grows, the space complexity is said to be Linear.
-O(logn) - Logarithmic
--> if the extra space need by the algorithm grows or reduces as the input size grows or reduces exponentially, the space complexity is said to be logarithmic.
+## Big-O Quick Reference
 
-nb: quadratic/ cubic space complexity should be avoided when possible.
+| Scenario | Time Complexity |
+|----------|-----------------|
+| Calculation not dependent on input size | O(1) - Constant |
+| Single loop | O(n) - Linear |
+| Nested loops (2 loops) | O(n²) - Quadratic |
+| Nested loops (3 loops) | O(n³) - Cubic |
+| Input size increases/reduces by half | O(log n) - Logarithmic |
 
-Ponits to note
-multiple algorithms exist  for the same problem and there is no one right solution. different algorithms work well under different constraints.
+---
 
-the same algorithm with the same programming language can be implemented in different ways
+## Time Complexity: Objects
 
-when writing programs at work, dont lose sight of the bigger picture. rather than writing clever code, wriete code that is simple to read and maintain.
+An object is a collection of key-value pairs.
 
-objects -big O
-an object is a collection of key value pairs
-object method and time complexity
-insert - o(1)
-remove - o(1)
-access - o(1)
-search - o(n)
-object.keys() - o(n)
-object.values() - o(n)
-object.entries() - o(n)
+| Operation | Time Complexity |
+|-----------|-----------------|
+| insert | O(1) |
+| remove | O(1) |
+| access | O(1) |
+| search | O(n) |
+| object.keys() | O(n) |
+| object.values() | O(n) |
+| object.entries() | O(n) |
 
-array - big O
-an array is an ordered collection of values
-insert/remove at end - o(1)
-insert/remove at beginning - o(n)
-access - o(1)
-search - o(n)
-push/pop - o(1)
-shift/unshift/concat/slice/splice - o(n)
-forEach/map/filter/reduce - o(n)
+---
 
+## Time Complexity: Arrays
 
-5. math algorithms
-related problem:
-fibonacci sequence
-factorial of a number
-prime number
-power of two
-recursion
-fibonacci sequence with recursion
-factorial of a number with recursion
+An array is an ordered collection of values.
 
+| Operation | Time Complexity |
+|-----------|-----------------|
+| insert/remove at end | O(1) |
+| insert/remove at beginning | O(n) |
+| access | O(1) |
+| search | O(n) |
+| push/pop | O(1) |
+| shift/unshift/concat/slice/splice | O(n) |
+| forEach/map/filter/reduce | O(n) |
+
+---
+
+## 6. Math Algorithms
+
+### Related Topics
+
+- Fibonacci sequence
+- Factorial of a number
+- Prime number
+- Power of two
+- Recursion
+- Fibonacci sequence with recursion
+- Factorial of a number with recursion
+
+### Fibonacci Sequence
+
+**Problem:** Given a number 'n', find the first 'n' elements of the Fibonacci sequence.
+
+**Definition:** The Fibonacci sequence is a sequence in which each number is the sum of the two preceding ones. The first two numbers in the sequence are 0 and 1.
+
+**Examples:**
+- fibonacci(2) = [0, 1]
+- fibonacci(3) = [0, 1, 1]
+- fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]

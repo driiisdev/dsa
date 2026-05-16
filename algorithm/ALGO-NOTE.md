@@ -5,13 +5,11 @@
 1. [Algorithm](#1-algorithm)
 2. [Measuring Performance](#2-measuring-performance)
 3. [Time & Space Complexity](#3-time--space-complexity)
-4. [Big-O Notation](#4-big-o-notation)
-5. [Points to Note](#5-points-to-note)
-6. [Big-O of Built-in Data Structures](#6-big-o-of-built-in-data-structures)
-7. [Math Algorithms](#7-math-algorithms)
-8. Sort
-9. Search
-10. Misc. Algorithms and Problem Solving
+4. [Big O Notation](#4-big-o-notation)
+5. [Math Algorithms](#5-math-algorithms)
+6. [Sort](#6-sort)
+7. [Search](#7-search)
+8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
 
 ---
 
@@ -59,36 +57,32 @@ There is no one solution that works every single time. It is always good to know
 - If your app needs to be very quick and has plenty of memory to work with, you don't have to worry about space complexity.
 - If you have very little memory to work with, you should pick a solution that is relatively slower but needs less space.
 
-### How to Represent Complexity — Asymptotic Notations
+### How to Represent Complexity?
 
-Mathematical tools to represent time and space complexity:
+**Asymptotic Notations** - mathematical tools to represent time and space complexity:
 
-| Notation | Name           | Case                              |
-| -------- | -------------- | --------------------------------- |
-| **O**    | Big-O Notation | Worst case *(most commonly used)* |
-| **Ω**    | Omega Notation | Best case                         |
-| **Θ**    | Theta Notation | Average case                      |
+1. **Big-O Notation** - Worst case complexity
+2. **Omega Notation** - Best case complexity
+3. **Theta Notation** - Average case complexity
 
 ---
 
 ## 4. Big-O Notation
 
-The worst case complexity of an algorithm is represented using the Big-O notation. It describes the complexity of an algorithm using algebraic terms.
+The worst case complexity of an algorithm is represented using the Big-O notation. Big-O notation describes the complexity of an algorithm using algebraic terms.
 
-**Two important characteristics:**
+### Important Characteristics
 
 - It is expressed in terms of the input
-- It focuses on the bigger picture without getting caught up in minute details
+- It focuses on the bigger picture without getting caught up in the minute details
 
----
+### Example 1: Loop Version
 
-### Example 1 — Loop version: `O(n)` Linear
-
-```js
+```javascript
 function summation(n) {
   let sum = 0;
-  for (let i = 1; i <= n; i++) {
-    sum += i;
+  for(let i = 1; i <= n; i++){
+    sum += i
   }
   return sum;
 }
@@ -96,65 +90,68 @@ function summation(n) {
 
 **Analysis:**
 
-| Statement       | Executions |
-| --------------- | ---------- |
-| `let sum = 0`   | 1          |
-| `for` loop body | n          |
-| `return sum`    | 1          |
+**Step 1:** Count the number of times a statement executes based on the input size
+- `let sum = 0` runs once → 1
+- `for loop` runs as a function of its condition 'n' (e.g. if 'n' = 3) runs thrice → 3
+- `return sum` runs once → 1
+- Total: n + 2 (since n is 3, and the reason why the loop runs thrice)
 
-Total = `n + 2`. Dropping the constant `+ 2`, the bigger picture is `n`.
+**Step 2:** Focus on the bigger picture without getting caught up in the minute details
+- "n + 2" - n is the bigger picture here. If n is 100, it'll be "100 + 2", hence 'n' is the bigger picture.
 
-**Time complexity: `O(n)` — Linear**
-As the input doubles, time roughly doubles.
+**Step 3:** Final review
+- Time complexity: **O(n) - Linear**
+- As the input doubles, time roughly doubles.
 
 ---
 
-### Example 2 — Formula version: `O(1)` Constant
+### Example 2: Formula Version
 
-```js
-function summation(n) {
-  return (n * (n + 1)) / 2;
+```javascript
+function summation(n){
+  return((n*(n+1))/2);
 }
 ```
 
 **Analysis:**
 
-| Statement                  | Executions |
-| -------------------------- | ---------- |
-| `return (n * (n + 1)) / 2` | 1          |
+**Step 1:** Count the number of times a statement executes based on the input size
+- `return((n*(n+1))/2);` runs once → 1
 
-Regardless of how large `n` gets, only one statement executes. The input size has no effect on the number of steps.
+**Step 2:** Focus on the bigger picture without getting caught up in the minute details
+- Regardless of how large 'n' gets, only one statement gets executed. The input size has no effect on the number of steps.
 
-**Time complexity: `O(1)` — Constant**
-No matter the input size, time stays the same.
+**Step 3:** Final review
+- Time complexity: **O(1) - Constant**
+- No matter the input size, time stays the same.
 
 ---
 
-### Example 3 — Two Nested Loops: `O(n²)` Quadratic
+### Example 3: Two Nested Loops
 
-```js
-for (let i = 1; i <= n; i++) {
-  for (let j = 1; j <= i; j++) {
-    // statement
+```javascript
+for (i = 1; i <= n; i++) {
+  for (j = 1; j <= i; j++) {
+    // statement of the code to be executed
   }
 }
 ```
 
 **Analysis:**
 
-The loop is nested twice, so the input iterates `n²` times. The full formula approximates to `3n² + 5n + 1`, where `5n + 1` are the less dominant terms.
+Time complexity: The loop is nested twice, hence input runs twice → **O(n²)** - Quadratic
 
-**Time complexity: `O(n²)` — Quadratic**
+Formula: ~3n² + 5n + 1, where the less dominant terms are "5n + 1"
 
 ---
 
-### Example 4 — Three Nested Loops: `O(n³)` Cubic
+### Example 4: Three Nested Loops
 
-```js
-for (let i = 1; i <= n; i++) {
-  for (let j = 1; j <= i; j++) {
-    for (let k = 1; k <= j; k++) {
-      // statement
+```javascript
+for (i = 1; i <= n; i++) {
+  for (j = 1; j <= i; j++) {
+    for (k = 1; k <= j; k++) {
+      // statement of the code to be executed
     }
   }
 }
@@ -162,18 +159,19 @@ for (let i = 1; i <= n; i++) {
 
 **Analysis:**
 
-The loop is nested three times, so the input iterates `n³` times. The full formula approximates to `n³ + 3n² + 5n + 1`, where `3n² + 5n + 1` are the less dominant terms.
+Time complexity: The loop is nested thrice, hence input runs thrice → **O(n³)** - Cubic
 
-**Time complexity: `O(n³)` — Cubic**
+Formula: ~n³ + 3n² + 5n + 1, where the less dominant terms are "3n² + 5n + 1"
 
 ---
 
-### Example 5 — Logarithmic: `O(log n)`
+### Example 5: Logarithmic Algorithm
 
-```js
-function logExample(n) {
+```javascript
+function logExample(n){
   let i = 1;
-  while (i <= n) {
+
+  while(i <= n){
     i = i * 2;
   }
 }
@@ -181,86 +179,119 @@ function logExample(n) {
 
 **Analysis:**
 
-The key statement is `i = i * 2`. Tracking how `i` grows:
+**Step 1:** Count the number of times a statement executes based on the input size
 
-| Run | Value of `i` |
-| --- | ------------ |
-| 1st | 2            |
-| 2nd | 4            |
-| 3rd | 8            |
-| 4th | 16           |
-| ... | ...          |
+The key statement is: `i = i * 2;`
 
-After `k` runs: `i = 2^k`. The loop stops when `2^k >= n`.
+Let's track how i grows:
+- 1st run → i = 2
+- 2nd run → i = 4
+- 3rd run → i = 8
+- 4th run → i = 16
 
-Solving: `2^k >= n` → taking log of both sides → `k ≈ log₂(n)`
+After k runs: i = 2^k
 
-So the loop runs about `log(n)` times. As `n` grows, the number of steps increases very slowly because `i` keeps doubling.
+Loop stops when: 2^k >= n
 
-**Time complexity: `O(log n)` — Logarithmic**
-The input size is reduced exponentially each step, so the number of operations increases slowly as `n` increases.
+**Step 2:** Focus on the bigger picture
+
+Solve: 2^k >= n
+
+Take log on both sides: k ≈ log₂(n)
+
+So the loop runs about log(n) times. As n grows, the number of steps increases very slowly because we keep doubling.
+
+**Step 3:** Final review
+
+Time complexity: **O(log n) - Logarithmic**
+
+The input size is reduced (or grows) exponentially each step, so the number of operations increases slowly as n increases.
 
 ---
 
-### Space Complexity
+### Space Complexity Reference
 
-| Notation   | Name        | Description                                                                       |
-| ---------- | ----------- | --------------------------------------------------------------------------------- |
-| `O(1)`     | Constant    | Algorithm needs no extra memory, or memory needed does not depend on input size   |
-| `O(n)`     | Linear      | Extra space needed grows as input size grows                                      |
-| `O(log n)` | Logarithmic | Extra space grows or reduces as input size grows or reduces exponentially         |
+- **O(1) - Constant:** Algorithm doesn't need extra memory, or memory needed doesn't depend on input size
+- **O(n) - Linear:** Extra space needed grows as input size grows
+- **O(log n) - Logarithmic:** Extra space needed grows or reduces exponentially with input size
 
-> **Note:** Quadratic `O(n²)` and cubic `O(n³)` space complexity should be avoided when possible.
+> **Note:** Quadratic/cubic space complexity should be avoided when possible.
 
 ---
 
 ## 5. Points to Note
 
-- Multiple algorithms exist for the same problem — there is no one right solution. Different algorithms work well under different constraints.
-- The same algorithm with the same programming language can be implemented in different ways.
-- When writing programs at work, don't lose sight of the bigger picture. Rather than writing clever code, write code that is simple to read and maintain.
+- Multiple algorithms exist for the same problem, and there is no one right solution
+- Different algorithms work well under different constraints
+- The same algorithm with the same programming language can be implemented in different ways
+- When writing programs at work, don't lose sight of the bigger picture
+- Write code that is simple to read and maintain rather than clever code
 
 ---
 
-## 6. Big-O of Built-in Data Structures
+## Big-O Quick Reference
 
-### Object
+| Scenario | Time Complexity |
+|----------|-----------------|
+| Calculation not dependent on input size | O(1) - Constant |
+| Single loop | O(n) - Linear |
+| Nested loops (2 loops) | O(n²) - Quadratic |
+| Nested loops (3 loops) | O(n³) - Cubic |
+| Input size increases/reduces by half | O(log n) - Logarithmic |
+
+---
+
+## Time Complexity: Objects
 
 An object is a collection of key-value pairs.
 
-| Operation          | Complexity |
-| ------------------ | ---------- |
-| Insert             | `O(1)`     |
-| Remove             | `O(1)`     |
-| Access             | `O(1)`     |
-| Search             | `O(n)`     |
-| `Object.keys()`    | `O(n)`     |
-| `Object.values()`  | `O(n)`     |
-| `Object.entries()` | `O(n)`     |
-
-### Array
-
-An array is an ordered collection of values.
-
-| Operation                                          | Complexity |
-| -------------------------------------------------- | ---------- |
-| Insert / Remove at end (`push` / `pop`)            | `O(1)`     |
-| Insert / Remove at beginning (`shift` / `unshift`) | `O(n)`     |
-| Access                                             | `O(1)`     |
-| Search                                             | `O(n)`     |
-| `concat` / `slice` / `splice`                      | `O(n)`     |
-| `forEach` / `map` / `filter` / `reduce`            | `O(n)`     |
+| Operation | Time Complexity |
+|-----------|-----------------|
+| insert | O(1) |
+| remove | O(1) |
+| access | O(1) |
+| search | O(n) |
+| object.keys() | O(n) |
+| object.values() | O(n) |
+| object.entries() | O(n) |
 
 ---
 
-## 7. Math Algorithms
+## Time Complexity: Arrays
 
-### Related Problems
+An array is an ordered collection of values.
 
-- Fibonacci Sequence
-- Factorial of a Number
-- Prime Number
-- Power of Two
+| Operation | Time Complexity |
+|-----------|-----------------|
+| insert/remove at end | O(1) |
+| insert/remove at beginning | O(n) |
+| access | O(1) |
+| search | O(n) |
+| push/pop | O(1) |
+| shift/unshift/concat/slice/splice | O(n) |
+| forEach/map/filter/reduce | O(n) |
+
+---
+
+## 6. Math Algorithms
+
+### Related Topics
+
+- Fibonacci sequence
+- Factorial of a number
+- Prime number
+- Power of two
 - Recursion
-- Fibonacci Sequence with Recursion
-- Factorial of a Number with Recursion
+- Fibonacci sequence with recursion
+- Factorial of a number with recursion
+
+### Fibonacci Sequence
+
+**Problem:** Given a number 'n', find the first 'n' elements of the Fibonacci sequence.
+
+**Definition:** The Fibonacci sequence is a sequence in which each number is the sum of the two preceding ones. The first two numbers in the sequence are 0 and 1.
+
+**Examples:**
+- fibonacci(2) = [0, 1]
+- fibonacci(3) = [0, 1, 1]
+- fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]
