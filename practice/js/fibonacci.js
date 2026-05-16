@@ -1,4 +1,4 @@
-// Fibonacci Sequence - Reference Note
+// Fibonacci Sequence
 
 /**
 **Definition:**
@@ -28,13 +28,13 @@ A sequence where each number is the sum of the two preceding ones.
   - Store previously calculated values
   - Avoids recalculating: fib(5) doesn't recalculate fib(3) twice
   - Time: O(n)
-  - Space: O(n) - for storage, or O(log n) for optimized
+  - Space: O(n) - cache + recursive call stack
 
 **Optimization Tip:**
 Use two variables to track only the last two values instead of an array—saves space while maintaining O(n) time.
 
 **Example:** fib(5) = 5
-- fib(0)=0, fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5
+- fib(0)=0, fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5, fib(6)=8, fib(7)=13
 
 **Interview Tip:**
 - when asked to implement Fibonacci, clarify if they want the nth Fibonacci number, the full sequence up to n, or the sum of the full sequence.
@@ -139,7 +139,7 @@ class Fibonacci {
   }
 
   /** Dynamic Programming (Memoization) Approach (efficient, recommended for large "n") */
-  memo(n, memo = {}) {
+  memoization(n, memo = {}) {
     // reset values for each call
     this.nth = 0;
     this.seq = [];
@@ -182,7 +182,7 @@ class Fibonacci {
 /** Usage */ 
 var fib = new Fibonacci();
 
-console.log(fib.recursive(7));
+// console.log(fib.recursive(7));
 
 /** OR */
 
@@ -191,5 +191,5 @@ console.log(fib.recursive(7));
 
 /** OR */
 
-// var funCall = fib["iterative"](7);
+// var funCall = fib["memoization"](7);
 // console.log(funCall);

@@ -275,6 +275,8 @@ An array is an ordered collection of values.
 - Fibonacci sequence with recursion
 - Factorial of a number with recursion
 
+---
+
 ### Fibonacci Sequence
 
 **Problem:** Given a number 'n', find the first 'n' elements of the Fibonacci sequence.
@@ -285,3 +287,15 @@ An array is an ordered collection of values.
 - fibonacci(2) = [0, 1]
 - fibonacci(3) = [0, 1, 1]
 - fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]
+
+---
+
+### Factorial of a number
+
+**Problem:** Given an integer 'n', find the factorial of that integer.
+
+** Definition:** The Factorial of a non-negative integer 'n', denoted n!, is the product of all positive integers less than or equal to 'n'. The factorial of zero is 1.
+
+**Examples**
+factorial(4) = 4*3*2*1 = 24
+factorial(5) = 5*4*3*2*1 = 120
