@@ -297,5 +297,17 @@ An array is an ordered collection of values.
 ** Definition:** The Factorial of a non-negative integer 'n', denoted n!, is the product of all positive integers less than or equal to 'n'. The factorial of zero is 1.
 
 **Examples**
-factorial(4) = 4*3*2*1 = 24
-factorial(5) = 5*4*3*2*1 = 120
+- factorial(4) = 4x3x2x1 = 24
+- factorial(5) = 5x4x3x2x1 = 120
+
+---
+
+### Prime number
+
+**Problem:** Given a natural number 'n', determine if the number is prime or not.
+
+**Definition:** A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.
+
+**Example**
+- isPrime(5) = true(1 x 5 or 5 x 1)
+- isPrime(4) = false(1 x 4 or 2 x 2 or 4 x 1)
