@@ -129,8 +129,26 @@ class PrimeNumber {
     return true;
   }
 
+  sqRoot2(num) {
+    // reset values for each call
+    this.number = num;
+    this.isPrime = null;
+
+    if (num <= 1) return false; // 0 and 1 are not prime
+    if (num <= 3) return true; // 2 and 3 are prime
+    if (num % 2 === 0 || num % 3 === 0) return false; // eliminate multiples of 2 and 3
+
+    let limit = Math.sqrt(num);
+
+    for (let i = 5; i <= limit; i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
   /** Sieve of Eratosthenes Approach */
   sieve(n) {
+    // reset values for each call
     this.isPrime = new Array(n + 1).fill(true);
     this.isPrime[0] = false;
     this.isPrime[1] = false;
@@ -159,10 +177,10 @@ var primeChecker = new PrimeNumber();
 
 /** OR */
 
-// var funCall = primeChecker.sqRoot(13);
-// console.log(funCall);
+var funCall = primeChecker.sqRoot(19);
+console.log(funCall);
 
 /** OR */
 
-var funCall = primeChecker["sieve"](17);
-console.log(funCall);
+// var funCall = primeChecker["sieve"](19);
+// console.log(funCall);

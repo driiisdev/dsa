@@ -321,3 +321,6 @@ An array is an ordered collection of values.
 **Example**
 - isPrime(5) = true(1 x 5 or 5 x 1)
 - isPrime(4) = false(1 x 4 or 2 x 2 or 4 x 1)
+
+**Optimized Primality Test**
+- Integers larger than the square root do not need to be checked because, whenever 'n=a*b', one of the two factors 'a' and 'b' is less than or equal to the square root of 'n'

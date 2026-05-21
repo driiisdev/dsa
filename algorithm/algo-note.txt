@@ -311,3 +311,17 @@ An array is an ordered collection of values.
 **Example**
 - isPrime(5) = true(1 x 5 or 5 x 1)
 - isPrime(4) = false(1 x 4 or 2 x 2 or 4 x 1)
+
+**Optimized Primality Test**
+- Integers larger than the square root do not need to be checked because, whenever 'n=a*b', one of the two factors 'a' and 'b' is less than or equal to the square root of 'n'
+
+### Power of Two
+
+**Problem:** Given a positive integer 'n', determine if the number is a Power of 2 or not
+
+**Definition:** An integer is a power of two if there exists an integer 'x' such that 'n'===2^x
+
+**Example**
+isPowerOfTwo(1) = true(2^0)
+isPowerOfTwo(2) = true(2^1)
+isPowerOfTwo(5) = false
