@@ -1,4 +1,5 @@
 // Power of Two
+
 /**
 ** Definition:**
 A number is a power of two if it can be expressed as 2^n, where n is a non-negative integer (n >= 0).

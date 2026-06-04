@@ -45,14 +45,14 @@ The absolute running time of an algorithm cannot be predicted, since it depends 
 
 ---
 
-## 3. Time and Space Complexity
+## 3. Time & Space Complexity
 
-- **Time complexity:** Amount of time taken by an algorithm to run, as a function of input size
-- **Space complexity:** Amount of memory taken by an algorithm to run, as a function of input size
+- **Time complexity** — amount of time taken by an algorithm to run, as a function of input size
+- **Space complexity** — amount of memory taken by an algorithm to run, as a function of input size
 
 By evaluating against the input size, the analysis is not only machine independent but the comparison is also more appropriate.
 
-There is no one solution that works every single time. It is always good to know multiple ways to solve the problem and use the best solution, given your constraints.
+There is no one solution that works every single time. It is always good to know multiple ways to solve the problem and use the best solution given your constraints:
 
 - If your app needs to be very quick and has plenty of memory to work with, you don't have to worry about space complexity.
 - If you have very little memory to work with, you should pick a solution that is relatively slower but needs less space.
@@ -103,6 +103,8 @@ function summation(n) {
 - Time complexity: **O(n) - Linear**
 - As the input doubles, time roughly doubles.
 
+---
+
 ### Example 2: Formula Version
 
 ```javascript
@@ -123,6 +125,8 @@ function summation(n){
 - Time complexity: **O(1) - Constant**
 - No matter the input size, time stays the same.
 
+---
+
 ### Example 3: Two Nested Loops
 
 ```javascript
@@ -138,6 +142,8 @@ for (i = 1; i <= n; i++) {
 Time complexity: The loop is nested twice, hence input runs twice → **O(n²)** - Quadratic
 
 Formula: ~3n² + 5n + 1, where the less dominant terms are "5n + 1"
+
+---
 
 ### Example 4: Three Nested Loops
 
@@ -156,6 +162,8 @@ for (i = 1; i <= n; i++) {
 Time complexity: The loop is nested thrice, hence input runs thrice → **O(n³)** - Cubic
 
 Formula: ~n³ + 3n² + 5n + 1, where the less dominant terms are "3n² + 5n + 1"
+
+---
 
 ### Example 5: Logarithmic Algorithm
 
@@ -198,6 +206,8 @@ So the loop runs about log(n) times. As n grows, the number of steps increases v
 Time complexity: **O(log n) - Logarithmic**
 
 The input size is reduced (or grows) exponentially each step, so the number of operations increases slowly as n increases.
+
+---
 
 ### Space Complexity Reference
 
@@ -315,6 +325,8 @@ An array is an ordered collection of values.
 **Optimized Primality Test**
 - Integers larger than the square root do not need to be checked because, whenever 'n=a*b', one of the two factors 'a' and 'b' is less than or equal to the square root of 'n'
 
+---
+
 ### Power of Two
 
 **Problem:** Given a positive integer 'n', determine if the number is a Power of 2 or not
@@ -322,6 +334,19 @@ An array is an ordered collection of values.
 **Definition:** An integer is a power of two if there exists an integer 'x' such that 'n'===2^x
 
 **Example**
-isPowerOfTwo(1) = true(2^0)
-isPowerOfTwo(2) = true(2^1)
-isPowerOfTwo(5) = false
+- isPowerOfTwo(1) = true(2^0)
+- isPowerOfTwo(2) = true(2^1)
+- isPowerOfTwo(5) = false
+
+---
+
+### Recursion
+
+**What:** A problem solving technique where the solution depends on solutions to smaller instances of the same problem. Simply put — a function calls itself.
+
+**Why:** Great for simplifying solutions and breaking problems into smaller versions.
+
+**Points to note:**
+- Every recursive solution needs a base case — a condition to terminate the recursion.
+- Recursion may simplify a problem but doesn't always mean a faster solution; a recursive approach can be far worse than an iterative one.
+- Recursion is not the most straightforward topic — don't give up if you struggle with it.
