@@ -7,8 +7,8 @@
 3. [Time & Space Complexity](#3-time--space-complexity)
 4. [Big O Notation](#4-big-o-notation)
 5. [Math Algorithms](#5-math-algorithms)
-6. [Sort](#6-sort)
-7. [Search](#7-search)
+6. [Search Algorithms](#6-search-algorithms)
+7. [Sort Algorithms](#7-sort-algorithms)
 8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
 
 ---
@@ -209,7 +209,7 @@ The input size is reduced (or grows) exponentially each step, so the number of o
 
 ---
 
-## 5. Points to Note
+### Points to Note
 
 - Multiple algorithms exist for the same problem, and there is no one right solution
 - Different algorithms work well under different constraints
@@ -263,7 +263,7 @@ An array is an ordered collection of values.
 
 ---
 
-## 6. Math Algorithms
+## 5. Math Algorithms
 
 ### Related Topics
 
@@ -315,6 +315,8 @@ An array is an ordered collection of values.
 **Optimized Primality Test**
 - Integers larger than the square root do not need to be checked because, whenever 'n=a*b', one of the two factors 'a' and 'b' is less than or equal to the square root of 'n'
 
+---
+
 ### Power of Two
 
 **Problem:** Given a positive integer 'n', determine if the number is a Power of 2 or not
@@ -326,6 +328,8 @@ isPowerOfTwo(1) = true(2^0)
 isPowerOfTwo(2) = true(2^1)
 isPowerOfTwo(5) = false
 
+---
+
 ### Recursion
 
 **What:** Recursion is a problem solving technique where the solution depends on solutions to smaller instances of the same problem. Simply said; Recursion is when a function calls itself.
@@ -336,4 +340,48 @@ isPowerOfTwo(5) = false
 - every recursive solution needs to have a base case - a condition to terminate the recursion.
 - recursion might simplify solving a problem but it does not always translates to a faster solution. a recursive solution may be far worse compared to an iterative solution
 - recursion is a topic that is not the most straight forward to understand. do not give up if you struggle with the concept.
+
+---
+
+## 6. Search algorithms
+
+### focus ###
+- Linear Search
+- Binary Search
+- Recursive Binary Search
+
+---
+
+### Linear Search
+
+**Problem:** given an  array of 'n' elements and a target element 't', find the index of 't' in the arrray. return -1 if the target element is not found.
+
+**Example:**
+- arr = [-5, 2, 10, 4, 6], t = 10 -> should return 2
+- arr = [-5, 2, 10, 4, 6], t = 6 -> should return 4
+- arr = [-5, 2, 10, 4, 6], t = 20 -> should return -1
+
+** linear search pseudocode**
+- start at the first element in the array and move towards the last
+- at each element though, check if the element is equal to the target element
+- if element found, return the index of the element
+- if element not found, return -1
+
+---
+
+### Binary Search
+
+**Problem:** given a sorted array of 'n' elements and a target element 't', find the index of 't' in the arrray. return -1 if the target element is not found.
+
+**Example:**
+- arr = [-5, 2, 4, 6, 10], t = 10 -> should return 4
+- arr = [-5, 2, 4, 6, 10], t = 6 -> should return 3
+- arr = [-5, 2, 4, 6, 10], t = 20 -> should return -1
+
+** binary search pseudocode**
+- if the array is empty, return -1 as the element cannot be found
+- if the array has elements, find the middle element in the array. if the array is the middle element, return the middle element index
+- if the target is less than the middle element, binary search left half of the array
+- if the target is greater than the middle element, binary search right half of the array
+
 

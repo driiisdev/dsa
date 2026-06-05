@@ -7,8 +7,8 @@
 3. [Time & Space Complexity](#3-time--space-complexity)
 4. [Big O Notation](#4-big-o-notation)
 5. [Math Algorithms](#5-math-algorithms)
-6. [Sort](#6-sort)
-7. [Search](#7-search)
+6. [Search Algorithms](#6-search-algorithms)
+7. [Sort Algorithms](#7-sort-algorithms)
 8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
 
 ---
@@ -219,7 +219,7 @@ The input size is reduced (or grows) exponentially each step, so the number of o
 
 ---
 
-## 5. Points to Note
+### Points to Note
 
 - Multiple algorithms exist for the same problem, and there is no one right solution
 - Different algorithms work well under different constraints
@@ -273,7 +273,7 @@ An array is an ordered collection of values.
 
 ---
 
-## 6. Math Algorithms
+## 5. Math Algorithms
 
 ### Related Topics
 
@@ -350,3 +350,51 @@ An array is an ordered collection of values.
 - Every recursive solution needs a base case — a condition to terminate the recursion.
 - Recursion may simplify a problem but doesn't always mean a faster solution; a recursive approach can be far worse than an iterative one.
 - Recursion is not the most straightforward topic — don't give up if you struggle with it.
+
+---
+
+## 6. Search Algorithms
+
+### Focus
+
+- Linear Search
+- Binary Search
+- Recursive Binary Search
+
+---
+
+### Linear Search
+
+**Problem:** Given an array of 'n' elements and a target element 't', find the index of 't' in the array. Return -1 if the target element is not found.
+
+**Examples:**
+
+- arr = [-5, 2, 10, 4, 6], t = 10 → should return 2
+- arr = [-5, 2, 10, 4, 6], t = 6 → should return 4
+- arr = [-5, 2, 10, 4, 6], t = 20 → should return -1
+
+**Pseudocode:**
+
+- Start at the first element in the array and move towards the last
+- At each element, check if the element is equal to the target element
+- If element found, return the index of the element
+- If element not found, return -1
+
+---
+
+### Binary Search
+
+**Problem:** Given a sorted array of 'n' elements and a target element 't', find the index of 't' in the array. Return -1 if the target element is not found.
+
+**Examples:**
+
+- arr = [-5, 2, 4, 6, 10], t = 10 → should return 4
+- arr = [-5, 2, 4, 6, 10], t = 6 → should return 3
+- arr = [-5, 2, 4, 6, 10], t = 20 → should return -1
+
+**Pseudocode:**
+
+- If the array is empty, return -1 as the element cannot be found
+- If the array has elements, find the middle element in the array. If the target is the middle element, return the middle element index
+- If the target is less than the middle element, binary search the left half of the array
+- If the target is greater than the middle element, binary search the right half of the array
