@@ -368,7 +368,6 @@ An array is an ordered collection of values.
 **Problem:** Given an array of 'n' elements and a target element 't', find the index of 't' in the array. Return -1 if the target element is not found.
 
 **Examples:**
-
 - arr = [-5, 2, 10, 4, 6], t = 10 → should return 2
 - arr = [-5, 2, 10, 4, 6], t = 6 → should return 4
 - arr = [-5, 2, 10, 4, 6], t = 20 → should return -1
@@ -387,14 +386,37 @@ An array is an ordered collection of values.
 **Problem:** Given a sorted array of 'n' elements and a target element 't', find the index of 't' in the array. Return -1 if the target element is not found.
 
 **Examples:**
-
 - arr = [-5, 2, 4, 6, 10], t = 10 → should return 4
 - arr = [-5, 2, 4, 6, 10], t = 6 → should return 3
 - arr = [-5, 2, 4, 6, 10], t = 20 → should return -1
 
 **Pseudocode:**
-
 - If the array is empty, return -1 as the element cannot be found
 - If the array has elements, find the middle element in the array. If the target is the middle element, return the middle element index
 - If the target is less than the middle element, binary search the left half of the array
 - If the target is greater than the middle element, binary search the right half of the array
+
+---
+
+## 7. Sorting Algorithms
+
+- Bubble Sort
+- Insertion Sort
+- Quick Sort
+
+---
+
+### Bubble Sort
+
+**Problem:** Given an array of integers, sort the array.
+
+**Example:**
+
+- arr = [-6, 20, 8, -2, 4]
+- bubbleSort(arr) → should return [-6, -2, 4, 8, 20]
+
+**Idea:**
+
+- Compare adjacent elements in the array and swap their positions if they are not in the intended order
+- Repeat as you step through each element in the array
+- Once you step through the whole array with no swaps, the array is sorted

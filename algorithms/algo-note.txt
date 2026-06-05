@@ -384,4 +384,29 @@ isPowerOfTwo(5) = false
 - if the target is less than the middle element, binary search left half of the array
 - if the target is greater than the middle element, binary search right half of the array
 
+---
+
+## 7. Sorting algorithms
+
+### Focus
+
+- Bubble sort
+- insertion sort
+- Quick sort
+
+---
+
+### Bubble sort
+
+**Problem:** given an array of integers, sort the array.
+
+**examples:**
+- const arr = [-6, 20, 8, -2, 4]
+- bubbleSort(arr) => should return [-6, -2, 4, 8, 20]
+
+**Bubble sort idea**
+- compare adjacent elements in the array and swap the positions if they are not in the intended order
+- repeat the instruction as you step through each element in the array
+- once you step through the whole array with no swaps, the array is sorted
+
 
