@@ -426,3 +426,23 @@ isPowerOfTwo(5) = false
 - if the elements in the sorted part is smaller than the selected element, proceed to the next element in the unsorted part. else, shift larger elements in the sorted part towards the right
 - insert the selected element at the right index
 - repeat till all the unsorted elements are placed in the right order
+
+---
+
+### Quick sort
+
+**Problem:** given an array of integers, sort the array.
+
+**examples:**
+- const arr = [-6, 20, 8, -2, 4]
+- quickSort(arr) => should return [-6, -2, 4, 8, 20]
+
+**Quick sort idea**
+- identify the pivot element in the array
+  . pick first element as pivot
+  . pick last element as pivot (our approach)
+  . pick a random element as pivot
+  . pick median as pivot
+- put everything that's smaller than the pivot into a 'left' array and everything that's greater than the pivot into a 'right' array
+- repeat the process for the individual 'left' and 'right' arrays till you have an array of length 1 which is sorted by definition
+- repeatedly concatenate the left array, pivot and right array till one sorted array remains

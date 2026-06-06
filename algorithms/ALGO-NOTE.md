@@ -420,3 +420,53 @@ An array is an ordered collection of values.
 - Compare adjacent elements in the array and swap their positions if they are not in the intended order
 - Repeat as you step through each element in the array
 - Once you step through the whole array with no swaps, the array is sorted
+
+![Bubble Sort](../assets/img/Bubble-sort.png)
+
+---
+
+### Insertion Sort
+
+**Problem:** Given an array of integers, sort the array.
+
+**Example:**
+
+- arr = [-6, 20, 8, -2, 4]
+- insertionSort(arr) → should return [-6, -2, 4, 8, 20]
+
+**Idea:**
+
+- Virtually split the array into a sorted and an unsorted part
+- Assume that the first element is already sorted and remaining elements are unsorted
+- Select an unsorted element and compare with all elements in the sorted part
+- If the elements in the sorted part are smaller than the selected element, proceed to the next element in the unsorted part. Otherwise, shift larger elements in the sorted part towards the right
+- Insert the selected element at the right index
+- Repeat until all unsorted elements are placed in the right order
+
+![Insertion Sort](../assets/img/Insertion-sort.png)
+
+---
+
+### Quick Sort
+
+**Problem:** Given an array of integers, sort the array.
+
+**Example:**
+
+- arr = [-6, 20, 8, -2, 4]
+- quickSort(arr) → should return [-6, -2, 4, 8, 20]
+
+**Idea:**
+
+- Identify the pivot element in the array:
+  - Pick first element as pivot
+  - Pick last element as pivot (our approach)
+  - Pick a random element as pivot
+  - Pick median as pivot
+- Put everything smaller than the pivot into a `left` array and everything greater into a `right` array
+- Repeat the process for the individual `left` and `right` arrays until you have arrays of length 1, which are sorted by definition
+- Repeatedly concatenate the left array, pivot, and right array until one sorted array remains
+
+![Quick Sort](../assets/img/Quick-sort.png)
+
+---
