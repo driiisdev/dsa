@@ -446,3 +446,17 @@ isPowerOfTwo(5) = false
 - put everything that's smaller than the pivot into a 'left' array and everything that's greater than the pivot into a 'right' array
 - repeat the process for the individual 'left' and 'right' arrays till you have an array of length 1 which is sorted by definition
 - repeatedly concatenate the left array, pivot and right array till one sorted array remains
+
+---
+
+### Merge sort
+
+**Problem:** given an array of integers, sort the array.
+
+**examples:**
+- const arr = [-6, 20, 8, -2, 4]
+- mergeSort(arr) => should return [-6, -2, 4, 8, 20]
+
+**Merge sort idea**
+- divide the array into sub arrays, each containing only one element (an array with one element is considered sorted)
+- repeatedly merge the sub arrays to produce new sorted sub arrays until there is only one sub array remaining. That will be the sorted array

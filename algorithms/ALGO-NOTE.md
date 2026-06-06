@@ -403,6 +403,7 @@ An array is an ordered collection of values.
 - Bubble Sort
 - Insertion Sort
 - Quick Sort
+- Merge Sort
 
 ---
 
@@ -468,5 +469,25 @@ An array is an ordered collection of values.
 - Repeatedly concatenate the left array, pivot, and right array until one sorted array remains
 
 ![Quick Sort](../assets/img/Quick-sort.png)
+
+---
+
+### Merge Sort
+
+**Problem:** Given an array of integers, sort the array.
+
+**Example:**
+
+- arr = [-6, 20, 8, -2, 4]
+- mergeSort(arr) → should return [-6, -2, 4, 8, 20]
+
+**Idea:**
+
+- Divide the array into sub-arrays, each containing only one element (an array with one element is considered sorted)
+- Repeatedly merge the sub-arrays to produce new sorted sub-arrays until there is only one sub-array remaining — that will be the sorted array
+
+![Merge Sort - Divide](../assets/img/Merge-sort1.png)
+
+![Merge Sort - Merge](../assets/img/Merge-sort2.png)
 
 ---
