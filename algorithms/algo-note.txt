@@ -409,4 +409,20 @@ isPowerOfTwo(5) = false
 - repeat the instruction as you step through each element in the array
 - once you step through the whole array with no swaps, the array is sorted
 
+---
 
+### Insertion sort
+
+**Problem:** given an array of integers, sort the array.
+
+**examples:**
+- const arr = [-6, 20, 8, -2, 4]
+- insertionSort(arr) => should return [-6, -2, 4, 8, 20]
+
+**Insertion sort idea**
+- Virtually split the array into a sorted and an unsorted part
+- assume that the first element is already sorted and remaining elements are unsorted
+- select an unsorted element and compare with all elements in the sorted part
+- if the elements in the sorted part is smaller than the selected element, proceed to the next element in the unsorted part. else, shift larger elements in the sorted part towards the right
+- insert the selected element at the right index
+- repeat till all the unsorted elements are placed in the right order

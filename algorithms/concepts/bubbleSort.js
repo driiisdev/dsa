@@ -45,7 +45,9 @@ class BubbleSort {
     // reset values for each call
     this.array = arr;
     this.result = null;
+
     let n = arr.length;
+
     for (let i = 0; i < n - 1; i++) {
       for (let j = 0; j < n - i - 1; j++) {
         if (arr[j] > arr[j + 1]) {
@@ -54,6 +56,7 @@ class BubbleSort {
         }
       }
     }
+
     this.result = arr;
     return arr;
   }
@@ -63,8 +66,10 @@ class BubbleSort {
     // reset values for each call
     this.array = arr;
     this.result = null;
+
     let n = arr.length;
     let swapped;
+
     for (let i = 0; i < n - 1; i++) {
       swapped = false;
       for (let j = 0; j < n - i - 1; j++) {
@@ -78,6 +83,7 @@ class BubbleSort {
         break;
       }
     }
+    
     this.result = arr;
     return arr;
   }
