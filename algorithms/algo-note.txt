@@ -460,3 +460,34 @@ isPowerOfTwo(5) = false
 **Merge sort idea**
 - divide the array into sub arrays, each containing only one element (an array with one element is considered sorted)
 - repeatedly merge the sub arrays to produce new sorted sub arrays until there is only one sub array remaining. That will be the sorted array
+
+---
+
+## 8. Misc Algorithms Problem
+
+### focus
+
+- cartesian product
+- climbing staircase
+- tower of hanoi
+
+---
+
+### Cartesian
+
+**Problem:** Given two finite non-empty sets, find their Cartesian Product.
+
+- in mathematics, specifically set theory, the cartesian product of two sets A and B, denoted A x B, is the set of all ordered pairs (a, b) where a is in A and b in B
+
+**example:**
+
+- set A:- const A = [1,2]
+- set B:- const B = [3,4]
+- A x B = [[1,3], [1,4], [2,3], [2,4]]
+
+- set C:- const C = [1,2]
+- set D:- const D = [3,4]
+- C x D = [[1,3], [1,4], [1,5],[2,3], [2,4], [2,5]]
+
+**Cartesian product idea**
+- Traverse each array and pair each element in the first array with each element in the second array

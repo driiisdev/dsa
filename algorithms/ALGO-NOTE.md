@@ -491,3 +491,30 @@ An array is an ordered collection of values.
 ![Merge Sort - Merge](../assets/img/Merge-sort2.png)
 
 ---
+
+## 8. Misc. Algorithms and Problem Solving
+
+### Focus Areas
+
+- Cartesian Product
+- Climbing Staircase
+- Tower of Hanoi
+
+---
+
+### Cartesian Product
+
+**Problem:** Given two finite non-empty sets, find their Cartesian Product.
+
+**Definition:** In mathematics (set theory), the Cartesian Product of two sets A and B, denoted A × B, is the set of all ordered pairs (a, b) where a is in A and b is in B.
+
+**Examples:**
+
+- A = [1, 2], B = [3, 4] → A × B = [[1,3], [1,4], [2,3], [2,4]]
+- C = [1, 2], D = [3, 4, 5] → C × D = [[1,3], [1,4], [1,5], [2,3], [2,4], [2,5]]
+
+**Idea:**
+
+- Traverse each array and pair each element in the first array with each element in the second array
+
+---
