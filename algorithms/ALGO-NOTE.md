@@ -8,7 +8,7 @@
 4. [Big O Notation](#4-big-o-notation)
 5. [Math Algorithms](#5-math-algorithms)
 6. [Search Algorithms](#6-search-algorithms)
-7. [Sort Algorithms](#7-sort-algorithms)
+7. [Sort Algorithms](#7-sorting-algorithms)
 8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
 
 ---
@@ -91,15 +91,18 @@ function summation(n) {
 **Analysis:**
 
 **Step 1:** Count the number of times a statement executes based on the input size
+
 - `let sum = 0` runs once → 1
 - `for loop` runs as a function of its condition 'n' (e.g. if 'n' = 3) runs thrice → 3
 - `return sum` runs once → 1
 - Total: n + 2 (since n is 3, and the reason why the loop runs thrice)
 
 **Step 2:** Focus on the bigger picture without getting caught up in the minute details
+
 - "n + 2" - n is the bigger picture here. If n is 100, it'll be "100 + 2", hence 'n' is the bigger picture.
 
 **Step 3:** Final review
+
 - Time complexity: **O(n) - Linear**
 - As the input doubles, time roughly doubles.
 
@@ -116,12 +119,15 @@ function summation(n){
 **Analysis:**
 
 **Step 1:** Count the number of times a statement executes based on the input size
+
 - `return((n*(n+1))/2);` runs once → 1
 
 **Step 2:** Focus on the bigger picture without getting caught up in the minute details
+
 - Regardless of how large 'n' gets, only one statement gets executed. The input size has no effect on the number of steps.
 
 **Step 3:** Final review
+
 - Time complexity: **O(1) - Constant**
 - No matter the input size, time stays the same.
 
@@ -184,6 +190,7 @@ function logExample(n){
 The key statement is: `i = i * 2;`
 
 Let's track how i grows:
+
 - 1st run → i = 2
 - 2nd run → i = 4
 - 3rd run → i = 8
@@ -232,7 +239,7 @@ The input size is reduced (or grows) exponentially each step, so the number of o
 ## Big-O Quick Reference
 
 | Scenario | Time Complexity |
-|----------|-----------------|
+| -------- | --------------- |
 | Calculation not dependent on input size | O(1) - Constant |
 | Single loop | O(n) - Linear |
 | Nested loops (2 loops) | O(n²) - Quadratic |
@@ -246,7 +253,7 @@ The input size is reduced (or grows) exponentially each step, so the number of o
 An object is a collection of key-value pairs.
 
 | Operation | Time Complexity |
-|-----------|-----------------|
+| --------- | --------------- |
 | insert | O(1) |
 | remove | O(1) |
 | access | O(1) |
@@ -262,7 +269,7 @@ An object is a collection of key-value pairs.
 An array is an ordered collection of values.
 
 | Operation | Time Complexity |
-|-----------|-----------------|
+| --------- | --------------- |
 | insert/remove at end | O(1) |
 | insert/remove at beginning | O(n) |
 | access | O(1) |
@@ -294,6 +301,7 @@ An array is an ordered collection of values.
 **Definition:** The Fibonacci sequence is a sequence in which each number is the sum of the two preceding ones. The first two numbers in the sequence are 0 and 1.
 
 **Examples:**
+
 - fibonacci(2) = [0, 1]
 - fibonacci(3) = [0, 1, 1]
 - fibonacci(7) = [0, 1, 1, 2, 3, 5, 8]
@@ -304,9 +312,10 @@ An array is an ordered collection of values.
 
 **Problem:** Given an integer 'n', find the factorial of that integer.
 
-** Definition:** The Factorial of a non-negative integer 'n', denoted n!, is the product of all positive integers less than or equal to 'n'. The factorial of zero is 1.
+**Definition:** The Factorial of a non-negative integer 'n', denoted n!, is the product of all positive integers less than or equal to 'n'. The factorial of zero is 1.
 
-**Examples**
+**Examples:**
+
 - factorial(4) = 4x3x2x1 = 24
 - factorial(5) = 5x4x3x2x1 = 120
 
@@ -318,11 +327,13 @@ An array is an ordered collection of values.
 
 **Definition:** A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.
 
-**Example**
+**Example:**
+
 - isPrime(5) = true(1 x 5 or 5 x 1)
 - isPrime(4) = false(1 x 4 or 2 x 2 or 4 x 1)
 
-**Optimized Primality Test**
+**Optimized Primality Test:**
+
 - Integers larger than the square root do not need to be checked because, whenever 'n=a*b', one of the two factors 'a' and 'b' is less than or equal to the square root of 'n'
 
 ---
@@ -333,7 +344,8 @@ An array is an ordered collection of values.
 
 **Definition:** An integer is a power of two if there exists an integer 'x' such that 'n'===2^x
 
-**Example**
+**Example:**
+
 - isPowerOfTwo(1) = true(2^0)
 - isPowerOfTwo(2) = true(2^1)
 - isPowerOfTwo(5) = false
@@ -347,6 +359,7 @@ An array is an ordered collection of values.
 **Why:** Great for simplifying solutions and breaking problems into smaller versions.
 
 **Points to note:**
+
 - Every recursive solution needs a base case — a condition to terminate the recursion.
 - Recursion may simplify a problem but doesn't always mean a faster solution; a recursive approach can be far worse than an iterative one.
 - Recursion is not the most straightforward topic — don't give up if you struggle with it.
@@ -368,6 +381,7 @@ An array is an ordered collection of values.
 **Problem:** Given an array of 'n' elements and a target element 't', find the index of 't' in the array. Return -1 if the target element is not found.
 
 **Examples:**
+
 - arr = [-5, 2, 10, 4, 6], t = 10 → should return 2
 - arr = [-5, 2, 10, 4, 6], t = 6 → should return 4
 - arr = [-5, 2, 10, 4, 6], t = 20 → should return -1
@@ -386,11 +400,13 @@ An array is an ordered collection of values.
 **Problem:** Given a sorted array of 'n' elements and a target element 't', find the index of 't' in the array. Return -1 if the target element is not found.
 
 **Examples:**
+
 - arr = [-5, 2, 4, 6, 10], t = 10 → should return 4
 - arr = [-5, 2, 4, 6, 10], t = 6 → should return 3
 - arr = [-5, 2, 4, 6, 10], t = 20 → should return -1
 
 **Pseudocode:**
+
 - If the array is empty, return -1 as the element cannot be found
 - If the array has elements, find the middle element in the array. If the target is the middle element, return the middle element index
 - If the target is less than the middle element, binary search the left half of the array
@@ -516,5 +532,25 @@ An array is an ordered collection of values.
 **Idea:**
 
 - Traverse each array and pair each element in the first array with each element in the second array
+
+---
+
+### Climbing Staircase
+
+**Problem:** Given a staircase of 'n' steps, count the number of distinct ways to climb to the top. You can either climb 1 step or 2 steps at a time.
+
+**Examples:**
+
+- climbingStaircase(1) = 1   | (1)
+- climbingStaircase(2) = 2   | (1, 1) and (2)
+- climbingStaircase(3) = 3   | (1, 1, 1), (1, 2) and (2, 1)
+- climbingStaircase(4) = 5   | (1, 1, 1, 1), (1, 1, 2), (1, 2, 1), (2, 1, 1) and (2, 2)
+
+**Idea:**
+
+- At any given time, you can climb either 1 step or 2 steps
+- If you have to climb to step 'n', you can only arrive from step 'n-1' or 'n-2'
+- Calculate the ways to climb to 'n-1' and 'n-2' steps and add them together
+- climbingStaircase(n) = climbingStaircase(n-1) + climbingStaircase(n-2)
 
 ---
