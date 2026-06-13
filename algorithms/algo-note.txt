@@ -510,3 +510,12 @@ isPowerOfTwo(5) = false
 - if you have to climb to step 'n', we can only climb from step 'n-1' or 'n-2'
 - Calculate the ways we can climb to 'n-1' and 'n-2' steps and add the two
 - climbingStaircase(n) = climbingStaircase(n-1) + climbingStaircase(n-2)
+
+---
+
+### Tower of Hanoi
+
+**Objective:** the objective of the puzzle is to move the entire stack to the last rod, obeying the following rules:
+- only one disk may be moved at a time
+- each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+- no disk may be placed on top of a disk that is smaller

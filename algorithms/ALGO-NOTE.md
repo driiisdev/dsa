@@ -554,3 +554,36 @@ An array is an ordered collection of values.
 - climbingStaircase(n) = climbingStaircase(n-1) + climbingStaircase(n-2)
 
 ---
+
+### Tower of Hanoi
+
+**Objective:** Move the entire stack of disks from the source rod to the target rod, obeying the following rules:
+
+- Only one disk may be moved at a time
+- Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod
+- No disk may be placed on top of a disk that is smaller
+
+**Example (n = 3):**
+
+1. Move disk 1 from rod A to rod C
+2. Move disk 2 from rod A to rod B
+3. Move disk 1 from rod C to rod B
+4. Move disk 3 from rod A to rod C
+5. Move disk 1 from rod B to rod A
+6. Move disk 2 from rod B to rod C
+7. Move disk 1 from rod A to rod C
+
+**Idea:**
+
+- Shift `n-1` disks from A to B, using C (when required)
+- Shift the last disk from A to C
+- Shift `n-1` disks from B to C, using A (when required)
+
+**Complexity:**
+
+- Time: O(2ⁿ) — exponential growth of moves as n increases
+- Space: O(n) recursive / O(1) iterative
+
+![Tower of Hanoi](../assets/img/Tower-hanoi.png)
+
+---
