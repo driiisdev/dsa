@@ -1,0 +1,33 @@
+# Data Structures
+
+## What is a data Structure?
+- a data Structure is a way to store and organize data so that it can be used efficiently
+- a data Structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to that data
+
+## why learn data Structure?
+-  almost every application we build involves data that is modelled in a certain way
+- to efficiently manage that data, you need data Structures
+- imagine walking into a library only to find out there is no efficient organization of the books and they are stored randomly
+- the difference between a function taking a few milliseconds vs a few seconds or even minutes comes down to the selection of the right data Structure
+- data Structure help you solve problems in a more efficient way, both in terms of time and memory
+- learning about data Structure also help you gain a more profound understanding of things you are already aware of
+  . dom - tree data Structure
+  . browser back and forward - stack data Structure
+  . os job scheduling - queue data Structure
+
+## Course overview
+### built in data Structures
+- Arrays
+-Objects
+-sets
+-maps
+
+###custom data Structure
+- stacks
+- queues
+- circular queues
+- linked lists
+- hash tables
+- Trees
+- graphs
+

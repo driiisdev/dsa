@@ -10,6 +10,7 @@
 6. [Search Algorithms](#6-search-algorithms)
 7. [Sort Algorithms](#7-sorting-algorithms)
 8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
+9. [Other Algorithm Design Techniques](#9-other-algorithm-design-techniques)
 
 ---
 
@@ -587,3 +588,25 @@ An array is an ordered collection of values.
 ![Tower of Hanoi](../assets/img/Tower-hanoi.png)
 
 ---
+
+## 9. Other Algorithm Design Techniques
+
+**Brute Force** — Simple and exhaustive technique that evaluates every possible outcome to find the best solution. e.g. Linear Search
+
+**Greedy** — Choose the best option at the current time, without any consideration for the future. e.g. Dijkstra's algorithm, Prim's algorithm, Kruskal's algorithm
+
+**Divide and Conquer** — Divide the problem into smaller sub-problems. Each sub-problem is then solved and the partial solutions are recombined to determine the overall solution. e.g. Binary Search, Quick Sort, Merge Sort, Tower of Hanoi
+
+**Dynamic Programming** — Divide the problem into smaller but overlapping sub-problems. Store the result and reuse it for the same sub-problems (memoization) — an optimization technique that improves time complexity. e.g. Fibonacci numbers, Climbing Staircase
+
+**Backtracking** — Generate all possible solutions. Check if the solution satisfies all given constraints and only then proceed with generating subsequent solutions. If constraints are not satisfied, backtrack and go on a different path. e.g. N-Queens Problem
+
+---
+
+### Next Steps
+
+- Solve Problems:-
+- Finding the GCD using the Euclidean algorithm
+- Finding permutations and combinations of a list of numbers
+- Finding the longest common substring in a given string
+- Knapsack problem

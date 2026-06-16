@@ -10,6 +10,7 @@
 6. [Search Algorithms](#6-search-algorithms)
 7. [Sort Algorithms](#7-sort-algorithms)
 8. [Misc. Algorithms and Problem Solving](#8-misc-algorithms-and-problem-solving)
+9. [Other Algorithm Design Techniques](#9- other-algorithm-design-techniques)
 
 ---
 
@@ -519,3 +520,24 @@ isPowerOfTwo(5) = false
 - only one disk may be moved at a time
 - each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
 - no disk may be placed on top of a disk that is smaller
+
+---
+
+## Other Algorithm Design Techniques
+
+**Bruce Force:** - Simple and exhaustive technique that evaluates every possible outcome to find the best solution. e.g: Linear Search
+
+**Greedy:** - Choose the best option at the current time, without any consideration for the future. e.g: Dijkstra's algorithm, Prim's algorithm and Kruskal's algorithm
+
+**Divide and Conquer:** - Divide the problem into smaller sub-problems. each sub-problem is then solved and the partial solutions are recombined to determine the overall solution. e.g: binary search, quick sort, merge sort and tower of hanoi
+
+** Dynamic Programming:** - Divide the problem into smaller sub-problems. Break it down into smaller but overlapping sub problems. store the result and reuse it for the same sub-problems. this is called memoization and is a Optimization technique that improves the time complexity of your algorithm. e.g: Fibonacci numbers and climbing staircase
+
+**BackTracking:** - generate all possible solutions. check if the solution satisfies all the given constrains and only then you proceed with generating subsequent solutions. if the constraints are not satisfied, backtrack and go on a different path to find the solution. e.g: N-Queens Problem
+
+### next steps
+**Solve more problems**
+  - Finding the GCD using Euclidian algorithm
+  - Finding permuations and combination of a list of numbers
+  - finding the longest common substring in a given substring
+  - knapsack problem
