@@ -31,3 +31,48 @@
 - Trees
 - graphs
 
+---
+
+### Array
+
+- An array is a data structure that can hold a collection of values
+- Arrays can contain a mix of different data types. you can store strings, booleans, numbers or even objects all in the same array
+- Arrays are resizable. you dont have to declare the size of an array before creating it
+- javascript arrays are zero-indexed and the insertion order is maintained
+- arrays are iterables.they can be used with a for loop
+
+---
+
+### Object
+- an object is an unordered collection of key-value pairs. the key must either be a string or symbol data type where as the value can be of any data type
+- to retrieve a value, you can use the corresponding key. this can be achieved using the dot notation or bracket notation
+- an object is not an iterable. you cannot use it with a for loop except with .keys(), .values() or .entries
+
+---
+
+### Set
+- a set is a data structure that can hold a collection of values. the values however must be unique
+- set can contain a mix of different data types. you can store strings, booleans, numbers or even objects all in the same set
+- sets are dynamically sized. you dont have to declare the size of a set before creating it
+- sets do not maintain an insertion order
+- sets are iterables. they can be used with a for of loop
+
+** sets vs arrays **
+- sets do not allow duplicate values, while arrays can contain duplicates
+- sets do not maintain the order of elements, while arrays do
+- sets have built-in methods for adding, checking, and removing values, while arrays require manual implementation for these operations
+
+---
+
+### map
+- a map is an unordered collection of key-value pairs. Both keys and values can be of any data type
+- to retrieve a value, you can use the corresponding key
+- maps are iterables. they can be used with a for of loop
+
+**map vs object**
+- object are unordered whereas maps are ordered
+- keys in objects can only be string or symbol type whereas in maps, they can be of any type
+- an object has a prototype and may contain a few default keys which may collide with your own keys if you are not careful. a map on the other hand does not contain any keys by default
+- objects are not iterables where as maps are iterables
+- the number of items in an object must be determined manually where as it is readily available with the size property in a map
+- apart from storing data, you can attach functionality to an object whereas maps are restricted to just storing data
