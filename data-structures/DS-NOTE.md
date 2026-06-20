@@ -9,6 +9,7 @@
 5. [Object](#5-object)
 6. [Set](#6-set)
 7. [Map](#7-map)
+8. [Stack](#8-stack)
 
 ---
 
@@ -149,3 +150,37 @@
 | `has`                | O(1)       |
 | `delete`             | O(1)       |
 | Iterate (`for...of`) | O(n)       |
+
+---
+
+## 8. Stack
+
+
+- A stack is a sequential collection of elements that follows the **Last In, First Out (LIFO)** principle
+- The last element inserted is the first to be removed — like a stack of plates
+- A stack is an abstract data type defined by its behavior, not a mathematical model
+- Two core operations:
+  - `push` — adds an element to the top
+  - `pop` — removes the most recently added element
+
+### Stack Usage
+
+- Browser history tracking
+- Undo operation when typing
+- Expression conversions
+- Call stack in the JavaScript runtime
+
+### Stack Big-O
+
+| Operation            | Complexity |
+| -------------------- | ---------- |
+| `push`               | O(1)       |
+| `pop`                | O(1)       |
+| `peek`               | O(1)       |
+| `isEmpty`            | O(1)       |
+| `size`               | O(1)       |
+| `clear`              | O(1)       |
+| Iterate (`for...of`) | O(n)       |
+
+![Stack Visualization - Push & Pop](../assets/img/Stack.png)
+

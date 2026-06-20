@@ -1,4 +1,5 @@
 // Set
+
 // - holds a collection of unique values (duplicates silently ignored)
 // - can contain a mix of different data types
 // - dynamically sized; iterates in insertion order
@@ -7,7 +8,7 @@
 const mySet = new Set();
 
 // Add
-mySet.add(1);
+// mySet.add(1);
 mySet.add(5);
 mySet.add(5);             // duplicate — ignored
 mySet.add("hello");

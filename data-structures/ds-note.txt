@@ -76,3 +76,19 @@
 - objects are not iterables where as maps are iterables
 - the number of items in an object must be determined manually where as it is readily available with the size property in a map
 - apart from storing data, you can attach functionality to an object whereas maps are restricted to just storing data
+
+## Stack
+- the stack data structure is a sequential collection of elements that follows the principle last in first out (LIFO)
+- the last element inserted into the stack is first element to be removed 
+- a stack of plates. the last plate placed on top of the stack is also the first plate removed from the stack
+- stack is an abstract data type. it is defined by its behavior rather than being a mathematical model
+- the stack data structure supports two main operations
+. push, which adds an element to the collection
+. pop, which removes the most recently added element from the collection
+
+**stack usage**
+- browser history tracking
+- undo operation when typing
+- expression conversions
+- call stack in javascript runtime
+
