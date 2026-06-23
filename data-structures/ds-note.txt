@@ -77,6 +77,8 @@
 - the number of items in an object must be determined manually where as it is readily available with the size property in a map
 - apart from storing data, you can attach functionality to an object whereas maps are restricted to just storing data
 
+---
+
 ## Stack
 - the stack data structure is a sequential collection of elements that follows the principle last in first out (LIFO)
 - the last element inserted into the stack is first element to be removed 
@@ -91,4 +93,29 @@
 - undo operation when typing
 - expression conversions
 - call stack in javascript runtime
+
+---
+
+## queue
+- the queue data structure is a sequential collection of elements that follows the principle of first in first out (fifo)
+- the first element inserted into the queue is first element to be removed
+- a queue of people. people enter the queue at one end (rear/tail) and leave the queue from the other end (front/head)
+-queue is abstract data type. it is defined by its behavior rather than being a mathematical model
+
+**the queue data structure supports two main operations**
+. enqueue, which adds an element to the rear/tail of the collection
+. dequeue, which removes an element from the front/head of the collection
+
+**queue usage**
+. printers
+. cpu task scheduling
+. callback queue in javascript runtime
+
+**queue implementation**
+- enqueue (element) - add an element to the  queue
+- dequeue() -  remove and element for the front of the  queue
+- peek() -  get the value of the element at the front of the queue without removing it
+- isEmpty() - check if the queue is empty
+- size() - get the number of elements in the queue
+- print() - visualize the elements in the queue
 

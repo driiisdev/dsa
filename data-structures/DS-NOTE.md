@@ -10,6 +10,7 @@
 6. [Set](#6-set)
 7. [Map](#7-map)
 8. [Stack](#8-stack)
+9. [Queue](#9-queue)
 
 ---
 
@@ -155,7 +156,6 @@
 
 ## 8. Stack
 
-
 - A stack is a sequential collection of elements that follows the **Last In, First Out (LIFO)** principle
 - The last element inserted is the first to be removed — like a stack of plates
 - A stack is an abstract data type defined by its behavior, not a mathematical model
@@ -184,3 +184,48 @@
 
 ![Stack Visualization - Push & Pop](../assets/img/Stack.png)
 
+---
+
+## 9. Queue
+
+- A queue is a sequential collection of elements that follows the **First In, First Out (FIFO)** principle
+- The first element inserted is the first to be removed — like a queue of people
+- People enter at one end (rear/tail) and leave from the other end (front/head)
+- A queue is an abstract data type defined by its behavior, not a mathematical model
+- Two core operations:
+  - `enqueue` — adds an element to the rear/tail
+  - `dequeue` — removes an element from the front/head
+
+### Queue Usage
+
+- Printers
+- CPU task scheduling
+- Callback queue in the JavaScript runtime
+
+### Queue Implementation
+
+| Method        | Description                                         |
+| ------------- | --------------------------------------------------- |
+| `enqueue(el)` | Add an element to the rear of the queue             |
+| `dequeue()`   | Remove and return the element at the front          |
+| `peek()`      | Return the front element without removing it        |
+| `isEmpty()`   | Check if the queue is empty                         |
+| `size()`      | Return the number of elements in the queue          |
+| `print()`     | Visualize the elements in the queue                 |
+
+### Queue Big-O
+
+| Operation            | Complexity |
+| -------------------- | ---------- |
+| `enqueue`            | O(1)       |
+| `dequeue`            | O(n)       |
+| `peek`               | O(1)       |
+| `isEmpty`            | O(1)       |
+| `size`               | O(1)       |
+| Iterate (`for...of`) | O(n)       |
+
+> **Note:** `dequeue` is O(n) when backed by an array because `Array.shift()` re-indexes every remaining element. A linked-list or object-based implementation achieves O(1).
+
+![Queue Visualization - Enqueue](../assets/img/Queue1.png)
+
+![Queue Visualization - Dequeue](../assets/img/Queue2.png)

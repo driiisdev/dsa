@@ -1,104 +1,101 @@
+// queue
 
-// ==== Queue ====
+// A queue is a linear data structure that follows the First In First Out (FIFO) principle. It is an ordered collection of items where the addition of new items happens at one end, called the rear, and the removal of existing items occurs at the other end, called the front.
 
-// function queue() {
-//     var collection = []
+// The main operations of a queue are:
+// 1. Enqueue: This operation adds an item to the rear of the queue.
+// 2. Dequeue: This operation removes an item from the front of the queue.
+// 3. Peek/Front: This operation returns the item at the front of the queue without removing it.
+// 4. IsEmpty: This operation checks if the queue is empty.
+// 5. Size: This operation returns the number of items in the queue.
 
-//     // to print the elements of the array
-//     this.print = function() {
-//         console.log(collection);
-//     };
+// The queue can be implemented using arrays or linked lists. In this implementation, we will use an array to represent the queue.
 
-//     // to add to the queue (at the end)
-//     this.enqueue = function (element) {
-//         collection.push(element);
-//     };
+class Queue {
+  constructor() {
+    this.items = [];
+  }
 
-//     // to remove the element at beginning of the queue
-//     this.dequeue = function () {
-//         return collection.shift();
-//     };
+  // Enqueue: Add an element to the rear of the queue
+  enqueue(element) {
+    this.items.push(element);
+  }
 
-//     // to display the elements at the beginning of the queue
-//     this.front = function () {
-//         return collection[0];
-//     };
-
-//     // to return the length of the queue
-//     this.size = function () {
-//         return collection.length;
-//     };
-
-//     // to check if the queue is empty
-//     this.isEmpty = function () {
-//         return(collection.length === 0);
-//     };
-// }
-
-// var q = new queue();
-// q.enqueue("a");
-// q.enqueue("b");
-// q.enqueue("c");
-// q.print();
-// q.dequeue();
-// console.log(q.front())
-// q.print();
-
-function priorityQueue() {
-    
-    var collection = [];
-    
-    this.printCollection = function () {
-        (console.log(collection));
-    };
-
-    this.enqueue = function (element) {
-        if (this.isEmpty()) {
-            collection.push(element);
-        }else{
-            var added = false;
-            for(var i=0; i<collection.length; i++){
-                if (element[1] < collection[i][1]) {
-                    collection.splice(i, 0, element);
-                    added = true;
-                    break;
-                }
-            }
-            if (!added) {
-                collection.push(element);
-            }
-        }
-    };
-
-    this.dequeue = function () {
-        var value = collection.shift();
-        return value[0];
+  // Dequeue: Remove and return the front element of the queue
+  dequeue() {
+    if (this.isEmpty()) {
+      return "Queue is empty";
     }
 
-    // to display the elements at the beginning of the queue
-    this.front = function () {
-        return collection[0];
-    };
+    return this.items.shift();
+  }
 
-    // to return the length of the queue
-    this.size = function () {0
-        return collection.length;
-    };
+  // Peek/Front: Return the front element of the queue without removing it
+  peek() {
+    if (this.isEmpty()) {
+      return "Queue is empty";
+    }
 
-    // to check if the queue is empty
-    this.isEmpty = function () {
-        return(collection.length === 0);
-    };
+    return this.items[0];
+  }
 
+  // IsEmpty: Check if the queue is empty
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  // Size: Return the number of elements in the queue
+  size() {
+    return this.items.length;
+  }
+
+  // Clear: Remove all elements from the queue
+  clear() {
+    this.items = [];
+  }
+
+  // Print: Visualize the elements in the queue (front → rear)
+  print() {
+    console.log(this.items.toString());
+  }
+
+  // Iterate: Allow iteration over the queue elements (from front to rear)
+  [Symbol.iterator]() {
+    let index = 0;
+    return {
+      next: () => {
+        if (index < this.items.length) {
+          return { value: this.items[index++], done: false };
+        } else {
+          return { done: true };
+        }
+      },
+    };
+  }
 }
 
-var pq = new priorityQueue();
-pq.enqueue(['beau carnes', 2]);
-pq.enqueue(['quincy', 3]);
-pq.enqueue(['ewa mitulska', 1])
-pq.enqueue(['ewa idris', 9])
-pq.printCollection();
-pq.dequeue();
-console.log(pq.dequeue());
-pq.front();
-pq.printCollection();
+// Big-O summary
+// enqueue                           O(1)
+// dequeue                           O(n) (due to shift operation)
+// peek                              O(1)
+// isEmpty                           O(1)
+// size                              O(1)
+// clear                             O(1)
+// iterate (for...of)                O(n)
+
+// Note: The dequeue operation has a time complexity of O(n) because the shift operation in an array requires re-indexing all the remaining elements. If performance is a concern, consider using a linked list implementation for the queue, which allows O(1) time complexity for both enqueue and dequeue operations.
+
+/** Usage */
+
+const myQueue = new Queue();
+myQueue.enqueue(9);
+myQueue.enqueue(8);
+myQueue.enqueue(5);
+myQueue.enqueue(6);
+myQueue.enqueue(7);
+
+console.log(myQueue.size()); // 5
+console.log(myQueue.peek()); // 9
+console.log(myQueue.dequeue()); // 9
+console.log(myQueue.print()); // 8,5,6,7
+console.log(myQueue.isEmpty()); // false
