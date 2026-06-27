@@ -11,6 +11,7 @@
 7. [Map](#7-map)
 8. [Stack](#8-stack)
 9. [Queue](#9-queue)
+10. [Circular Queue](#10-circular-queue)
 
 ---
 
@@ -229,3 +230,51 @@
 ![Queue Visualization - Enqueue](../assets/img/Queue1.png)
 
 ![Queue Visualization - Dequeue](../assets/img/Queue2.png)
+
+---
+
+## 10. Circular Queue
+
+- A circular queue is a linear data structure that follows the **First In, First Out (FIFO)** principle, but the last position is connected back to the first position to form a circle
+- Also referred to as a **circular buffer** or **ring buffer**
+- Uses a fixed block of memory — empty slots created by dequeue operations are reused
+- When working with queues of a fixed maximum size, a circular queue is the preferred implementation
+- Two core operations:
+  - `enqueue` — adds an element to the rear/tail
+  - `dequeue` — removes an element from the front/head
+
+### Circular Queue Usage
+
+- Clocks
+- Streaming data buffers
+- Traffic light scheduling
+
+### Circular Queue Implementation
+
+| Method        | Description                                              |
+| ------------- | -------------------------------------------------------- |
+| `enqueue(el)` | Add an element to the rear of the queue                  |
+| `dequeue()`   | Remove and return the element at the front               |
+| `peek()`      | Return the front element without removing it             |
+| `isFull()`    | Check if the queue has reached capacity                  |
+| `isEmpty()`   | Check if the queue is empty                              |
+| `size()`      | Return the number of elements currently in the queue     |
+| `print()`     | Visualize the elements in the queue (front → rear)       |
+
+### Circular Queue Big-O
+
+| Operation            | Complexity |
+| -------------------- | ---------- |
+| `enqueue`            | O(1)       |
+| `dequeue`            | O(1)       |
+| `peek`               | O(1)       |
+| `isFull`             | O(1)       |
+| `isEmpty`            | O(1)       |
+| `size`               | O(1)       |
+| Iterate (`for...of`) | O(n)       |
+
+> **Note:** All core operations are O(1) because the circular index trick (`(index + 1) % capacity`) eliminates the need to shift elements, unlike a plain array-backed queue.
+
+![Circular Queue Visualization - Enqueue](../assets/img/circular_queue-1.png)
+
+![Circular Queue Visualization - Dequeue](../assets/img/circular_queue-2.png)
