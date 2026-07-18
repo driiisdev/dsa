@@ -8,8 +8,8 @@ A personal reference for DSA topics, organized by category.
 
 | Category        | Notes                                   |
 | --------------- | --------------------------------------- |
-| Algorithms      | [ALGO-NOTE.md](algorithm/ALGO-NOTE.md)  |
-| Data Structures | [DS-NOTE.md](data-structure/DS-NOTE.md) |
+| Algorithms      | [ALGO-NOTE.md](algorithms/ALGO-NOTE.md)  |
+| Data Structures | [DS-NOTE.md](data-structures/DS-NOTE.md) |
 
 ---
 

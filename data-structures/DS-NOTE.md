@@ -14,6 +14,7 @@
 10. [Circular Queue](#10-circular-queue)
 11. [Singly Linked List](#11-singly-linked-list)
 12. [Doubly Linked List](#12-doubly-linked-list)
+13. [Hash Table](#13-hash-table)
 
 ---
 
@@ -445,3 +446,60 @@ Keeping a `tail` reference alongside `head` turns `append` (and removing the las
 - Browser history (back **and** forward navigation)
 - Undo/redo stacks that need to move in either direction
 - LRU cache implementations, where a node needs to jump to the front or be evicted from the back in O(1)
+
+---
+
+## 13. Hash Table
+
+- A hash table, also known as a hash map, is a data structure used to store key-value pairs
+- Given a key, you can associate a value with that key for very fast lookup
+- JavaScript's `Object` is a special implementation of the hash table data structure — though as a built-in, it carries inherited prototype keys that your own keys may collide with and overwrite
+- `Map` (introduced in ES2015) also stores key-value pairs, without the inherited-key collision risk
+- Writing a hash table implementation from scratch is a popular JavaScript interview question
+
+### Hash Table Concepts
+
+- Hash tables store key-value pairs, e.g.:
+  1. `'in'` → `'india'`
+  2. `'au'` → `'australia'`
+  3. `'fr'` → `'france'`
+  4. `'it'` → `'italy'`
+- A plain array-of-buckets hash table gives **no insertion-order guarantee** — iterating (`keys`, `values`, printing all entries) walks buckets by their numeric index, i.e. by hash value, not by the order items were inserted. This differs from JavaScript's own `Map`/`Object`, which do preserve insertion order.
+
+#### Analogy
+
+- Key-value pairs are stored in a fixed-size array
+- Arrays only have numeric indices — so how do you go from a string key to a numeric index? A **hashing function**
+- A hashing function accepts the string key, converts it into a hash code using a defined logic, then maps it to a numeric index within the bounds of the array
+- The value is stored at that index; the same hashing function is reused to retrieve the value given the key
+
+![Hash Table Visualization - Hashing a key to an index](<../assets/img/hash-table (1).png>)
+
+![Hash Table Visualization - Storing values in buckets](<../assets/img/hash-table(2).png>)
+
+### Hash Table Implementation
+
+| Method | Description |
+| --- | --- |
+| `set(key, value)` | Store a key-value pair |
+| `get(key)` | Retrieve a value given its key |
+| `remove(key)` | Delete a key-value pair given its key |
+
+> **Note:** Different keys can hash to the same index — a **collision**. Each slot in the array is typically its own bucket (array or linked list) of `[key, value]` pairs, rather than a single value, so colliding keys can still coexist.
+
+### Hash Table Usage
+
+- Database indexing
+- Caches
+- Anywhere constant-time lookup and insertion are required
+
+### Hash Table Big-O
+
+| Operation | Complexity |
+| --- | --- |
+| `set` | O(1) average, O(n) worst case |
+| `get` | O(1) average, O(n) worst case |
+| `remove` | O(1) average, O(n) worst case |
+| `keys` / `values` | O(n) |
+
+> **Note:** Worst-case O(n) happens when many keys collide into the same bucket. A good hash function (and resizing the table as it fills up) keeps buckets small and lookups close to O(1).

@@ -161,3 +161,39 @@
 **Linked list usage**
 - all applications of both stacks and queues are applications of linked lists
 -image viewer
+
+---
+
+## Hash tables
+-  a hash table, also known as hash map, is a data structure that is used to store key-value pairs
+- given a key, you can associate a value with that key for very fast lookup
+- javascript's object is a special implementation of the hash table data structure.
+- however, object class adds its own keys. keys that you input may conflict and overwrite the inherited default properties
+- maps which were introduced in 2015 allow you to store key-value pairs
+- writing your own hash table implementation ia av very popular javascript interview question
+
+### hash table concepts
+- hash tables store key value pairs
+  1. 'in' => 'india'
+  2. 'au' => 'australia'
+  3. 'fr' => 'france'
+  4. 'it' => 'italy'
+
+**analogy**
+- we store the key value pairs in a fix sized array
+- array have a numeric index
+- how do we go from using a string as an index to number as an index? hashing function
+- a hashing function accepts the string key,  converts it into a hash code using a defined logic and then maps it into a numeric index that is within the bounds of the array
+- using the index, store the value
+- the same hashing function is reused to retrieve the value given a key
+
+**hash table implementation**
+  . set to store a key-value pair
+  . get to retrieve a value given its key
+  . remove to delete a key value pair
+
+**hash table usage**
+- hash tables are typically implemented where constant time lookup and insertion are required
+- database indexing
+- caches
+
