@@ -1,14 +1,14 @@
-// Linked List
+// Singly Linked List
 
 // A linked list is a linear data structure where each element is a separate object, called a node. Each node contains data and a reference (or link) to the next node in the sequence. This allows for efficient insertion and deletion of elements, as the nodes can be easily rearranged without needing to shift other elements.
+
+// In a singly linked list, each node only holds a reference to the next node, so traversal is one-directional (head to tail).
 
 // The main operations of a linked list are:
 // 1. Insertion: Adding a new node to the linked list at a specific position (beginning, end, or middle).
 // 2. Deletion: Removing a node from the linked list at a specific position.
 // 3. Traversal: Accessing each node in the linked list to perform operations or retrieve data.
 // 4. Searching: Finding a specific node in the linked list based on its value.
-
-// The linked list can be implemented using a class to represent the nodes and another class to manage the linked list itself. In this implementation, we will create a singly linked list.
 
 class Node {
   constructor(value) {
@@ -17,7 +17,7 @@ class Node {
   }
 }
 
-class LinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null; // The first node in the linked list
     this.size = 0; // The number of nodes in the linked list
@@ -84,8 +84,7 @@ class LinkedList {
   // Insertion: Add a new node to the linked list at a specific position
   insertAt(value, index) {
     if (index < 0 || index > this.size) {
-      console.log("Index out of bounds.");
-      return;
+      return null; // If the index is out of bounds, return null
     }
 
     const newNode = new Node(value);
@@ -103,41 +102,73 @@ class LinkedList {
       newNode.next = current.next;
       current.next = newNode;
     }
-    
+
     this.size++;
   }
 
-
-  // Deletion: Remove a node from the linked list by value
-  delete(value) {
-    if (this.isEmpty()) {
-      return; // If the list is empty, do nothing
+  // Remove a node from the linked list at a specific position
+  removeFrom(index) {
+    if (index < 0 || index >= this.size) {
+      return null; // If the index is out of bounds, return null
     }
+
+    let removedNode;
+
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      let current = this.head;
+
+      for (let i = 0; i < index - 1; i++) {
+        current = current.next;
+      }
+
+      removedNode = current.next;
+      current.next = removedNode.next;
+    }
+    this.size--;
+    return removedNode.value; // Return the value of the removed node
+  }
+
+  // Remove a node from the linked list by value
+  remove(value) {
+    if (this.isEmpty()) {
+      return null; // If the list is empty, do nothing
+    }
+
     if (this.head.value === value) {
       this.head = this.head.next; // If the head node is the one to delete, update the head
       this.size--;
       return;
     }
+
     let current = this.head;
+
     while (current.next !== null) {
       if (current.next.value === value) {
         current.next = current.next.next; // Bypass the node to delete it
         this.size--;
         return;
       }
+
       current = current.next; // Move to the next node
     }
+    return null; // Return null if the value is not found
   }
 
   // Searching: Find a node in the linked list by value
   search(value) {
     let current = this.head;
+
     while (current !== null) {
       if (current.value === value) {
         return true; // Return true if the value is found
       }
+
       current = current.next; // Move to the next node
     }
+
     return false; // Return false if the value is not found
   }
 
@@ -145,6 +176,7 @@ class LinkedList {
   reverse() {
     let prev = null;
     let current = this.head;
+    
     while (current !== null) {
       let nextNode = current.next; // Store the next node
       current.next = prev; // Reverse the link
@@ -172,5 +204,3 @@ class LinkedList {
     };
   }
 }
-
-

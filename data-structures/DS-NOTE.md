@@ -12,6 +12,8 @@
 8. [Stack](#8-stack)
 9. [Queue](#9-queue)
 10. [Circular Queue](#10-circular-queue)
+11. [Singly Linked List](#11-singly-linked-list)
+12. [Doubly Linked List](#12-doubly-linked-list)
 
 ---
 
@@ -278,3 +280,168 @@
 ![Circular Queue Visualization - Enqueue](../assets/img/circular_queue-1.png)
 
 ![Circular Queue Visualization - Dequeue](../assets/img/circular_queue-2.png)
+
+---
+
+## 11. Singly Linked List
+
+- A linked list is a linear data structure that consists of a series of connected nodes
+- Each node holds a **value** and a **pointer** (`next`) to the next node in the sequence
+- Elements can be inserted or removed without reallocating or reorganizing the rest of the structure — unlike an array, nothing needs to shift
+- Random access isn't possible; reaching a given element means walking the list from the head, so access is O(n)
+
+![Linked List Overview](<../assets/img/linked list/singly-linked-list-overview.png>)
+
+![Linked List - Node](<../assets/img/linked list/singly-linked-list-node.png>)
+
+### Core Operations
+
+- **Insertion** — add an element at the beginning, end, or a given index
+- **Deletion** — remove an item by its index or by its value
+- **Search** — find an element given its value
+
+### Traversal (Print)
+
+Walk the list from `head` to `null`, one `next` pointer at a time.
+
+![Linked List - Print](<../assets/img/linked list/singly-linked-list-print.png>)
+
+### Prepend
+
+Point the new node's `next` at the current head, then make the new node the head. O(1) — no traversal needed.
+
+![Linked List - Prepend (existing list)](<../assets/img/linked list/singly-linked-list-prepend.png>)
+
+### Append
+
+Walk to the last node (the one whose `next` is `null`) and link it to the new node. Without a tail reference this costs O(n); see [Optimization: Tracking a Tail Pointer](#optimization-tracking-a-tail-pointer) below for the O(1) version.
+
+### Insert at a Given Index
+
+Walk to the node just before the target index, then splice the new node in between it and its old `next`.
+
+![Linked List - Insert (Index > 0)](<../assets/img/linked list/singly-linked-list-insert.png>)
+
+### Remove
+
+**By value:**
+
+![Linked List - Remove (value in head node, single-node list)](<../assets/img/linked list/singly-linked-list-remove-value-head-only-node.png>)
+
+![Linked List - Remove (value in head node)](<../assets/img/linked list/singly-linked-list-remove-value-head.png>)
+
+![Linked List - Remove (value in node after head)](<../assets/img/linked list/singly-linked-list-remove-value-after-head.png>)
+
+**By index:**
+
+![Linked List - Remove (index = 0, single-node list)](<../assets/img/linked list/singly-linked-list-remove-index-0-only-node.png>)
+
+![Linked List - Remove (index = 0)](<../assets/img/linked list/singly-linked-list-remove-index-0.png>)
+
+![Linked List - Remove (index > 0)](<../assets/img/linked list/singly-linked-list-remove-index-gt-0.png>)
+
+### Search
+
+Walk the list comparing each node's value until a match is found or `null` is reached.
+
+![Linked List - Find by value](<../assets/img/linked list/singly-linked-list-search.png>)
+
+### Reverse
+
+Re-point every node's `next` back at the node before it, tracking `prev`/`curr`/`next` pointers as you go, then make the old tail the new head.
+
+![Linked List - Reverse (overview)](<../assets/img/linked list/singly-linked-list-reverse-overview.png>)
+
+![Linked List - Reverse (step by step)](<../assets/img/linked list/singly-linked-list-reverse-steps.png>)
+
+### Using a Linked List as a Stack or Queue
+
+A linked list is the natural backing structure for both a stack and a queue — `prepend`/`removeFrom(0)` give a stack O(1) push/pop at the head, and tracking a tail reference gives a queue O(1) enqueue at the tail alongside O(1) dequeue at the head.
+
+![Linked List - Stack Push](<../assets/img/linked list/singly-linked-list-stack-push.png>)
+
+![Linked List - Queue Dequeue](<../assets/img/linked list/singly-linked-list-queue-dequeue.png>)
+
+### Optimization: Tracking a Tail Pointer
+
+Keeping a `tail` reference alongside `head` turns `append` (and removing the last node) from an O(n) walk into an O(1) pointer update — at the cost of an extra field to keep in sync on every insertion and removal.
+
+![Linked List With Tail - Empty](<../assets/img/linked list/singly-linked-list-tail-empty.png>)
+
+![Linked List With Tail - Insert first node](<../assets/img/linked list/singly-linked-list-tail-insert-first-node.png>)
+
+![Linked List With Tail - Prepend](<../assets/img/linked list/singly-linked-list-tail-prepend.png>)
+
+![Linked List With Tail - Append](<../assets/img/linked list/singly-linked-list-tail-append.png>)
+
+![Linked List With Tail - Delete first node](<../assets/img/linked list/singly-linked-list-tail-delete-first-node.png>)
+
+![Linked List With Tail - Delete only node](<../assets/img/linked list/singly-linked-list-tail-delete-only-node.png>)
+
+![Linked List With Tail - Delete last node](<../assets/img/linked list/singly-linked-list-tail-delete-last-node.png>)
+
+### Singly Linked List Big-O (No Tail Reference)
+
+| Operation | Complexity |
+| --- | --- |
+| Access by index | O(n) |
+| Search for value | O(n) |
+| Prepend (`insertAt(0)`) | O(1) |
+| Append | O(n) |
+| Insert at index | O(n) |
+| Remove from head | O(1) |
+| Remove by value / index | O(n) |
+| Reverse | O(n) |
+| Iterate (`for...of`) | O(n) |
+
+> **Note:** Tracking a `tail` reference brings `append` and "remove the last node" down to O(1), since there's no longer a need to walk the whole list to find the last node.
+
+### Linked List Usage
+
+- Every application of a stack or a queue is also an application of a linked list, since both can be implemented on top of one
+- Image viewers (each photo links to the next/previous)
+
+---
+
+## 12. Doubly Linked List
+
+- A doubly linked list is the same idea as a singly linked list, except each node also holds a `prev` pointer back to the previous node
+- The extra backward link allows traversal in **both directions** and lets a node be removed in O(1) once you're holding it, without needing to walk from the head to find its predecessor
+- A `tail` reference is typically kept alongside `head`, making append and "remove from the end" O(1) as well
+
+![Doubly Linked List - Prepend](<../assets/img/linked list/doubly-linked-list-prepend.png>)
+
+![Doubly Linked List - Append](<../assets/img/linked list/doubly-linked-list-append.png>)
+
+![Doubly Linked List - Remove from front](<../assets/img/linked list/doubly-linked-list-remove-from-front.png>)
+
+### Singly vs Doubly Linked List
+
+| Concern | Singly Linked List | Doubly Linked List |
+| --- | --- | --- |
+| Links per node | 1 (`next`) | 2 (`next` and `prev`) |
+| Memory per node | Lower | Higher (extra pointer) |
+| Traversal direction | Forward only | Forward and backward |
+| Remove tail (with a node ref) | O(n) — must find the `prev` | O(1) — `prev` is already known |
+| Remove head | O(1) | O(1) |
+
+### Doubly Linked List Big-O
+
+| Operation | Complexity |
+| --- | --- |
+| Access by index | O(n) |
+| Search for value | O(n) |
+| Prepend | O(1) |
+| Append (with `tail`) | O(1) |
+| Insert at index | O(n) |
+| Remove from head | O(1) |
+| Remove from tail | O(1) |
+| Remove by value / index | O(n) |
+| Reverse | O(n) |
+| Iterate (`for...of`) | O(n) |
+
+### Doubly Linked List Usage
+
+- Browser history (back **and** forward navigation)
+- Undo/redo stacks that need to move in either direction
+- LRU cache implementations, where a node needs to jump to the front or be evicted from the back in O(1)
