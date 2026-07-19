@@ -275,3 +275,50 @@
   . enqueue the node's left child if it exists
   . enqueue the node's right child if it exists
 
+---
+
+## graph
+- a graph is a non-linear data structure that consists of a finite number of vertices (also called nodes) connected by edges
+- trees are a specific type of graph data structure
+
+**types of graph**
+- directed
+- undirected
+
+### directed graph
+- a graph in which the edges have a direction
+- edges are usually represented by arrows pointing in the direction the graph can be traversed
+
+### undirected graph
+- a graph in which the edges are bidirectional
+- the graph can be traversed in either direction
+- the absence of an arrow tells us that the graph is undirected
+
+**graph representation**
+- adjacency matrix
+- adjacency list
+
+### adjacency matrix
+- an adjacency matrix is a 2d array of size v x v, where v is the number of vertices in the graph
+- each row and column represent a vertex
+- if the value of any element say, matrix[i][j] is 1, it represents that there is an edge connecting vertex i and vertex j
+
+### adjacency list
+- vertices are stored in a map like data structure, and every vertex stores a list of its adjacent vertices
+
+### adjacency matrix vs adjacency list
+- with adjacency list, we only need to store the value for the edges that exist. with adjacency matrix, you store values irrespective of whether an edge exists or not. storage wise, an adjacency list is way more efficient
+- with adjacency list, inserting and finding adjacent nodes is constant time complexity whereas with adjacency matrix, it is linear time complexity.
+- an adjacency list allows you to store additional values with an edge such as weight of the edge. with adjacency matrix, such information would have to be stored externally
+
+**graph usage**
+- google maps
+- social media sites
+
+## next steps
+- priority queue
+- circular linked lists
+- avl trees, red black trees and tries
+- directed acyclic graphs
+- prim's, kruskal's and floyd's algorithm
+- solve problems that utilize these data structures

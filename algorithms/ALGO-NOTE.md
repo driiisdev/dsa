@@ -289,6 +289,7 @@ An array is an ordered collection of values.
 - Factorial of a number
 - Prime number
 - Power of two
+- Greatest Common Divisor (GCD)
 - Recursion
 - Fibonacci sequence with recursion
 - Factorial of a number with recursion
@@ -350,6 +351,29 @@ An array is an ordered collection of values.
 - isPowerOfTwo(1) = true(2^0)
 - isPowerOfTwo(2) = true(2^1)
 - isPowerOfTwo(5) = false
+
+---
+
+### Greatest Common Divisor (GCD)
+
+**Problem:** Given two integers, find the largest positive integer that divides both of them without a remainder.
+
+**Definition:** Also known as the Greatest Common Factor (GCF) or Highest Common Factor (HCF).
+
+**Examples:**
+
+- gcd(48, 18) = 6 — 48 = 6×8, 18 = 6×3
+- gcd(17, 5) = 1 — no common factors other than 1 ("coprime")
+
+**Common Approaches:**
+
+1. **Naive** — check every integer from `min(a, b)` down to 1, return the first that divides both evenly. O(min(a, b)) time.
+2. **Euclidean Algorithm** — repeatedly replace the larger number with the remainder of dividing it by the smaller number, until the remainder is 0. Based on the identity `gcd(a, b) = gcd(b, a % b)`. O(log(min(a, b))) time.
+
+**Idea:**
+
+- `gcd(a, 0) = a` — the base case
+- Otherwise, `gcd(a, b) = gcd(b, a % b)`
 
 ---
 
@@ -514,8 +538,12 @@ An array is an ordered collection of values.
 ### Focus Areas
 
 - Cartesian Product
+- Permutations
+- Combinations
 - Climbing Staircase
 - Tower of Hanoi
+- Longest Common Substring
+- Knapsack Problem
 
 ---
 
@@ -533,6 +561,41 @@ An array is an ordered collection of values.
 **Idea:**
 
 - Traverse each array and pair each element in the first array with each element in the second array
+
+---
+
+### Permutations
+
+**Problem:** Given a set of elements, find every possible ordering of those elements.
+
+**Definition:** A permutation is an arrangement of elements where **order matters** — `[1, 2]` and `[2, 1]` are different permutations. A set of n distinct elements has `n!` permutations.
+
+**Example:**
+
+- permutations([1, 2]) → [[1, 2], [2, 1]]
+- permutations([1, 2, 3]) → 3! = 6 permutations: [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,2,1], [3,1,2]
+
+**Idea (Backtracking):**
+
+- Fix one element at the current position, recursively permute the rest
+- Swap the current position with each remaining position in turn, recurse, then swap back ("backtrack") before trying the next swap
+
+---
+
+### Combinations
+
+**Problem:** Given a set of elements and a size k, find every possible k-sized selection of those elements.
+
+**Definition:** A combination is a selection where **order does not matter** — `[1, 2]` and `[2, 1]` count as the same combination. The number of k-sized combinations from n elements is C(n, k) = n! / (k! × (n − k)!).
+
+**Example:**
+
+- combinations([1, 2, 3, 4], 2) → C(4, 2) = 6 combinations: [1,2], [1,3], [1,4], [2,3], [2,4], [3,4]
+
+**Idea (Backtracking):**
+
+- Walk the array once; at each index, either include the element in the current selection or skip it, always moving forward so earlier elements are never revisited (this is what prevents `[1,2]` from also being generated as `[2,1]`)
+- Once the current selection reaches size k, record it
 
 ---
 
@@ -589,24 +652,56 @@ An array is an ordered collection of values.
 
 ---
 
+### Longest Common Substring
+
+**Problem:** Given two strings, find the longest sequence of characters that appears **contiguously** (no gaps) in both.
+
+**Example:**
+
+- longestCommonSubstring("abcdef", "zabcf") → "abc"
+- longestCommonSubstring("abc", "xyz") → "" (no overlap)
+
+**Idea (Dynamic Programming):**
+
+- Build a table `dp[i][j]` = length of the common substring ending at `s1[i-1]` and `s2[j-1]`
+- On a character match, extend the streak: `dp[i][j] = dp[i-1][j-1] + 1`
+- On a mismatch, the streak breaks: `dp[i][j] = 0`
+- Track the largest value seen (and where it ended) to slice the actual substring back out
+
+> **Note:** Don't confuse this with Longest Common *Subsequence*, which allows gaps and never resets to 0 on a mismatch — it instead carries forward `max(dp[i-1][j], dp[i][j-1])`.
+
+**Complexity:** O(m × n) time, O(m × n) space (reducible to O(min(m, n)) with a rolling array)
+
+---
+
+### Knapsack Problem (0/1)
+
+**Problem:** Given items with weights and values, and a knapsack with a maximum weight capacity, find the maximum total value that fits without exceeding the capacity. Each item is either taken whole or left behind — no splitting, and each item can be used at most once.
+
+**Example:**
+
+- weights = [1, 3, 4, 5], values = [1, 4, 5, 7], capacity = 7
+- Best choice: the weight-3 and weight-4 items → total value 4 + 5 = **9**
+
+**Idea (Dynamic Programming):**
+
+- Build a table `dp[i][w]` = max value achievable using the first `i` items with capacity `w`
+- If the i-th item doesn't fit in the remaining capacity, skip it: `dp[i][w] = dp[i-1][w]`
+- Otherwise take the better of skipping or including it: `dp[i][w] = max(dp[i-1][w], values[i-1] + dp[i-1][w - weights[i-1]])`
+- The 2D table can be collapsed into a 1D rolling array — but the capacity loop must run **backwards** per item, or an item could be "reused" within the same pass (turning 0/1 knapsack into the unbounded variant)
+
+**Complexity:** O(n × capacity) time; O(n × capacity) space for the 2D table, or O(capacity) with the 1D rolling-array optimization
+
+---
+
 ## 9. Other Algorithm Design Techniques
 
 **Brute Force** — Simple and exhaustive technique that evaluates every possible outcome to find the best solution. e.g. Linear Search
 
 **Greedy** — Choose the best option at the current time, without any consideration for the future. e.g. Dijkstra's algorithm, Prim's algorithm, Kruskal's algorithm
 
-**Divide and Conquer** — Divide the problem into smaller sub-problems. Each sub-problem is then solved and the partial solutions are recombined to determine the overall solution. e.g. Binary Search, Quick Sort, Merge Sort, Tower of Hanoi
+**Divide and Conquer** — Divide the problem into smaller sub-problems. Each sub-problem is then solved and the partial solutions are recombined to determine the overall solution. e.g. Binary Search, Quick Sort, Merge Sort, Tower of Hanoi, Euclidean Algorithm (GCD)
 
-**Dynamic Programming** — Divide the problem into smaller but overlapping sub-problems. Store the result and reuse it for the same sub-problems (memoization) — an optimization technique that improves time complexity. e.g. Fibonacci numbers, Climbing Staircase
+**Dynamic Programming** — Divide the problem into smaller but overlapping sub-problems. Store the result and reuse it for the same sub-problems (memoization) — an optimization technique that improves time complexity. e.g. Fibonacci numbers, Climbing Staircase, Longest Common Substring, Knapsack Problem
 
-**Backtracking** — Generate all possible solutions. Check if the solution satisfies all given constraints and only then proceed with generating subsequent solutions. If constraints are not satisfied, backtrack and go on a different path. e.g. N-Queens Problem
-
----
-
-### Next Steps
-
-- Solve Problems:-
-- Finding the GCD using the Euclidean algorithm
-- Finding permutations and combinations of a list of numbers
-- Finding the longest common substring in a given string
-- Knapsack problem
+**Backtracking** — Generate all possible solutions. Check if the solution satisfies all given constraints and only then proceed with generating subsequent solutions. If constraints are not satisfied, backtrack and go on a different path. e.g. N-Queens Problem, Permutations, Combinations

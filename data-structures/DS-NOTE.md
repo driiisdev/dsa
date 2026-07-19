@@ -16,6 +16,10 @@
 12. [Doubly Linked List](#12-doubly-linked-list)
 13. [Hash Table](#13-hash-table)
 14. [Tree](#14-tree)
+15. [Graph](#15-graph)
+16. [Priority Queue](#16-priority-queue)
+17. [Circular Linked List](#17-circular-linked-list)
+18. [Trie](#18-trie-prefix-tree)
 
 ---
 
@@ -662,3 +666,208 @@ BFS explores all nodes at the current depth before moving to the next depth leve
 | BFS | O(n) |
 | Space (DFS, recursive) | O(h) — h = tree height, O(log n) balanced / O(n) worst case |
 | Space (BFS, queue) | O(w) — w = max tree width, up to O(n) |
+
+---
+
+## 15. Graph
+
+- A graph is a non-linear data structure consisting of a finite number of **vertices** (nodes) connected by **edges**
+- A tree is actually a specific, restricted type of graph (connected, acyclic, with a single root)
+
+![Graph Overview](<../assets/img/graph/graph  overview.png>)
+
+![Graph Visualization](<../assets/img/graph/graph visualization.png>)
+
+### Types of Graph
+
+#### Directed Graph
+
+- A graph in which edges have a **direction** — they go from one vertex to another, not both ways
+- Edges are drawn as arrows pointing in the direction the graph can be traversed
+
+![Directed Graph](<../assets/img/graph/directed graph.png>)
+
+#### Undirected Graph
+
+- A graph in which edges are **bidirectional** — the graph can be traversed in either direction along an edge
+- The absence of an arrow signals an undirected graph
+
+![Undirected Graph](<../assets/img/graph/undirected graph.png>)
+
+![More Graph Types](<../assets/img/graph/more graph types.png>)
+
+### Graph Representation
+
+- **Adjacency matrix** — a 2D array of size V × V (V = number of vertices). Each row/column represents a vertex; `matrix[i][j] === 1` means an edge connects vertex `i` and vertex `j`
+
+![Adjacency Matrix Representation](<../assets/img/graph/adjacency matrix representation.png>)
+
+- **Adjacency list** — vertices are stored in a map-like structure, and every vertex stores a list of its adjacent vertices
+
+![Adjacency List Representation](<../assets/img/graph/adjacency list representation.png>)
+
+### Adjacency Matrix vs Adjacency List
+
+| Concern | Adjacency List | Adjacency Matrix |
+| --- | --- | --- |
+| Storage | Only stores edges that exist — more space-efficient | Stores a value for every possible vertex pair, regardless of whether an edge exists |
+| Insert / find adjacent vertices | O(1) | O(V) |
+| Storing extra edge data (e.g. weight) | Natural — attach it alongside the neighbor | Needs external storage |
+
+### Graph Usage
+
+- Google Maps / routing and navigation
+- Social media sites (friend/follow networks)
+
+### Graph Operations
+
+| Method | Description |
+| --- | --- |
+| `addVertex(vertex)` | Add a vertex to the graph |
+| `addEdge(v1, v2)` | Connect two vertices with an edge |
+| `removeEdge(v1, v2)` | Remove the edge between two vertices |
+| `removeVertex(vertex)` | Remove a vertex and all edges connected to it |
+| `hasEdge(v1, v2)` | Check whether an edge exists between two vertices |
+| DFS / BFS | Visit every reachable vertex from a starting vertex |
+
+### Graph Big-O (Adjacency List)
+
+| Operation | Complexity |
+| --- | --- |
+| `addVertex` | O(1) |
+| `addEdge` | O(1) |
+| `removeEdge` | O(E) — E = edges on the vertex, to filter it out |
+| `removeVertex` | O(V + E) |
+| `hasEdge` | O(E) — E = edges on the vertex |
+| DFS / BFS | O(V + E) |
+
+> **Note:** With an adjacency matrix, `hasEdge` drops to O(1) but `addVertex` becomes O(V²) (the matrix must grow by a row and column), and traversal costs O(V²) instead of O(V + E) since every cell must be checked even where no edge exists.
+
+---
+
+## 16. Priority Queue
+
+- A priority queue is a data structure where each element carries a **priority**, and elements are served by priority rather than by insertion order (unlike a plain queue's strict FIFO behavior)
+- A **min** priority queue always serves the lowest priority value first; a **max** priority queue always serves the highest first
+- Typically implemented with a **binary heap** for O(log n) insertion/removal, rather than a sorted array (O(n log n) to keep sorted) or an unsorted array (O(n) scan to find the minimum/maximum each time)
+
+### Binary Heap
+
+- A complete binary tree (every level full except possibly the last, filled left to right) stored in a flat array
+- For a node at index `i`: its children live at `2i + 1` and `2i + 2`, and its parent lives at `floor((i - 1) / 2)`
+- **Heap property (min-heap):** every parent's priority is ≤ both of its children's priorities — this does *not* mean the array is fully sorted, only that the root is always the minimum
+- After every insertion or removal, the changed element is "bubbled" up or down until the heap property is restored
+
+### Priority Queue Operations
+
+| Method | Description |
+| --- | --- |
+| `enqueue(value, priority)` | Add a value with a given priority, then bubble it up to restore the heap property |
+| `dequeue()` | Remove and return the highest-priority element, then bubble the replacement down |
+| `peek()` | Return the highest-priority element without removing it |
+| `isEmpty()` | Check if the priority queue is empty |
+| `size()` | Return the number of elements |
+
+### Priority Queue Usage
+
+- Dijkstra's and Prim's algorithms (always process the closest/cheapest unvisited node next)
+- CPU task scheduling (higher-priority processes run first)
+- Hospital ER triage, print job queues — any "most urgent first" ordering
+
+### Priority Queue Big-O
+
+| Operation | Complexity |
+| --- | --- |
+| `enqueue` | O(log n) |
+| `dequeue` | O(log n) |
+| `peek` | O(1) |
+| `isEmpty` / `size` | O(1) |
+
+> **Note:** `algorithms/concepts/dijkstra.js` uses a minimal sorted-array priority queue instead of a binary heap — fine for a short demo, but it makes `enqueue` O(n log n) instead of O(log n). The binary-heap version here is the one to reach for outside of a small teaching example.
+
+---
+
+## 17. Circular Linked List
+
+- A circular linked list is a variation of a linked list where the **last node's `next` points back to the first node (`head`)** instead of `null`, forming a loop
+- There is no natural "end" to stop a naive traversal at — every traversal must count up to the list's known `size` (or stop upon returning to `head`) rather than checking for `next === null`, which would never happen and would loop forever
+- Core operations mirror a singly linked list (insertion, deletion, traversal, searching), but insertion/removal at either end must also keep the tail's `next` pointer correctly wrapped back to the head
+
+### Circular Linked List Operations
+
+| Method | Description |
+| --- | --- |
+| `append(value)` | Add a node to the end, closing the loop back to `head` |
+| `prepend(value)` | Add a node to the beginning, re-linking `tail.next` to the new `head` |
+| `remove(value)` | Delete the first node matching a value (handles head, tail, middle, and single-node cases) |
+| `search(value)` | Check whether a value exists, bounded to `size` steps |
+| `toArray()` | Return the list's values as a plain array |
+
+### Circular Linked List Usage
+
+- Round-robin CPU scheduling (cycle through processes indefinitely)
+- Repeating/looping playlists or carousels
+- Multiplayer turn order (cycle back to the first player after the last)
+
+### Circular Linked List Big-O
+
+| Operation | Complexity |
+| --- | --- |
+| Append (with `tail` reference) | O(1) |
+| Prepend | O(1) |
+| Remove from head | O(1) |
+| Remove from tail / by value | O(n) — must walk to the node before the target |
+| Search | O(n) |
+| Traverse (bounded by `size`) | O(n) |
+
+> **Note:** Without a tracked `size`, a bug in a circular list is much easier to trigger than in a regular linked list — any traversal that checks for `next === null` as its stop condition will spin forever, since that condition never occurs.
+
+---
+
+## 18. Trie (Prefix Tree)
+
+- A trie is a tree-shaped data structure specialized for storing strings, where each **edge represents a single character**, and words sharing a common prefix share the same path down from the root
+- This makes prefix-based lookups (autocomplete, spell-check, IP routing tables) far more efficient than scanning a list of strings one at a time
+- Each node marks whether a word actually **ends** there (`isEndOfWord`) — this distinguishes a stored word like `"car"` from `"car"` merely being a prefix of another stored word like `"card"`
+
+### Trie Operations
+
+| Method | Description |
+| --- | --- |
+| `insert(word)` | Add a word, one character at a time, creating nodes for any that don't already exist |
+| `search(word)` | Check whether an exact word exists |
+| `startsWith(prefix)` | Check whether any stored word begins with the given prefix |
+| `getWordsWithPrefix(prefix)` | Return every stored word beginning with the given prefix (autocomplete) |
+| `delete(word)` | Remove a word, pruning nodes left with no children and no other word ending there |
+
+> **Note:** Deleting from a trie is easy to get subtly wrong — a node can only be pruned if it has no children *and* isn't the end of some other word. Naively deleting nodes without checking both conditions can corrupt sibling words that share the deleted word's prefix (e.g. deleting `"car"` must not affect `"card"` or `"care"`).
+
+### Trie Usage
+
+- Autocomplete and typeahead search
+- Spell checkers (fast "does this prefix lead anywhere" checks)
+- IP routing tables (longest-prefix matching)
+- Dictionary / word-game implementations (e.g. Boggle, Scrabble validity checks)
+
+### Trie Big-O
+
+| Operation | Complexity |
+| --- | --- |
+| `insert` | O(k) — k = length of the word |
+| `search` | O(k) |
+| `startsWith` | O(k) |
+| `delete` | O(k) |
+| `getWordsWithPrefix` | O(k + m) — k to find the prefix node, m = total characters across all matching words |
+
+> **Note:** A trie trades memory for speed — storing n words of average length k can require up to O(n × k) nodes in the worst case (no shared prefixes), compared to a hash set's O(n) entries. The payoff is that trie lookups depend only on word length, not on how many words are stored.
+
+---
+
+### Next Steps
+
+Topics not yet covered in this document:
+
+- Self-balancing binary search trees: AVL trees and Red-Black trees
+- Directed Acyclic Graphs (DAGs) — cycle detection and topological sort on top of the existing `Graph` class
+- Minimum-spanning-tree and shortest-path graph algorithms: Prim's, Kruskal's, and Floyd-Warshall (`Dijkstra's` is already covered in `algorithms/concepts/dijkstra.js`)
+- Solve more problems that put these data structures to use
