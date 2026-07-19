@@ -15,6 +15,7 @@
 11. [Singly Linked List](#11-singly-linked-list)
 12. [Doubly Linked List](#12-doubly-linked-list)
 13. [Hash Table](#13-hash-table)
+14. [Tree](#14-tree)
 
 ---
 
@@ -503,3 +504,161 @@ Keeping a `tail` reference alongside `head` turns `append` (and removing the las
 | `keys` / `values` | O(n) |
 
 > **Note:** Worst-case O(n) happens when many keys collide into the same bucket. A good hash function (and resizing the table as it fills up) keeps buckets small and lookups close to O(1).
+
+---
+
+## 14. Tree
+
+- A tree is a hierarchical data structure that consists of nodes connected by edges
+- Unlike arrays, linked lists, stacks, and queues — all **linear** data structures — a tree is **non-linear**
+- In linear data structures, search time is proportional to the size of the data set; a tree's non-linear/branching shape allows faster access to data
+- A tree contains no loops or cycles
+
+![Tree Visualization](<../assets/img/tree/tree visualization.png>)
+
+### Tree Terminology
+
+![Tree Terminology](<../assets/img/tree/tree terminology (1).png>)
+
+![Tree Terminology](<../assets/img/tree/tree terminology (2).png>)
+
+![Tree Terminology](<../assets/img/tree/tree terminology (3).png>)
+
+![Tree Terminology](<../assets/img/tree/tree terminology (4).png>)
+
+### Tree Usage
+
+- File systems (directory structure)
+- Family trees
+- Organization charts
+- The DOM
+- Chatbot decision trees
+- Abstract syntax trees (ASTs)
+
+### Binary Tree
+
+- A binary tree is a tree in which each node has **at most two children**, referred to as the **left child** and **right child**
+
+![Binary Tree Visualization](<../assets/img/tree/binary tree visualization.png>)
+
+### Binary Search Tree (BST)
+
+- A binary search tree layers an ordering rule on top of a binary tree:
+  - Every value in a node's **left** subtree is **smaller** than the node's value
+  - Every value in a node's **right** subtree is **greater** than the node's value
+  - Each node still has at most two children
+
+![Binary Search Tree Visualization](<../assets/img/tree/binary search tree visualization.png>)
+
+![Binary Search Tree - Root Node](<../assets/img/tree/binary search tree w root node.png>)
+
+#### Insertion
+
+Compare the new value against each node starting at the root, going left when smaller and right when greater, until an empty spot is found.
+
+![BST - Insert Node (1)](<../assets/img/tree/binary search tree - insert node (1).png>)
+
+![BST - Insert Node (2)](<../assets/img/tree/binary search tree - insert node (2).png>)
+
+![BST - Insert Node (3)](<../assets/img/tree/binary search tree - insert node (3).png>)
+
+![BST - Insert Node (4)](<../assets/img/tree/binary search tree - insert node (4).png>)
+
+#### BST Search
+
+Starting at the root, go left or right depending on whether the target is smaller or larger than the current node, until it's found or a `null` child is reached.
+
+![BST - Search](<../assets/img/tree/binary search tree - search.png>)
+
+#### Min / Max
+
+Because of the ordering rule, the minimum value is always the leftmost node and the maximum value is always the rightmost node.
+
+![BST - Min Node](<../assets/img/tree/min node.png>)
+
+![BST - Max Node](<../assets/img/tree/max node.png>)
+
+#### Removal
+
+Removing a node has three cases, depending on how many children it has:
+
+![Remove Node - No Children](<../assets/img/tree/remove node - no children.png>)
+
+![Remove Node - One Child](<../assets/img/tree/remove node - one child.png>)
+
+![Remove Node - Two Children](<../assets/img/tree/remove node - two child nodes.png>)
+
+### Binary Search Tree Operations
+
+| Method | Description |
+| --- | --- |
+| `insert(value)` | Add a node to the tree |
+| `search(value)` | Find whether a node with the given value exists |
+| `remove(value)` | Remove a node given its value |
+| DFS / BFS | Visit every node in the tree |
+
+### Binary Search Tree Usage
+
+- Searching
+- Sorting
+- Implementing abstract data types such as lookup tables and priority queues
+
+### Binary Search Tree Big-O
+
+| Operation | Average | Worst Case (unbalanced) |
+| --- | --- | --- |
+| `insert` | O(log n) | O(n) |
+| `search` | O(log n) | O(n) |
+| `remove` | O(log n) | O(n) |
+| Traversal (DFS/BFS) | O(n) | O(n) |
+
+> **Note:** Worst case degrades to O(n) when the tree is unbalanced — e.g. inserting values in sorted order produces a tree that's really just a linked list. Self-balancing trees (AVL, Red-Black) guarantee O(log n).
+
+### Tree Traversal
+
+Visiting every node in a tree can be done in different ways:
+
+- **Depth-First Search (DFS)** — go as far as possible down one branch before backtracking
+- **Breadth-First Search (BFS)** — visit every node at the current depth before moving to the next depth level
+
+#### Depth-First Search (DFS)
+
+DFS starts at the root and explores as far as possible along each branch before backtracking: visit the root, then the entire left subtree, then the entire right subtree. The order in which the root is visited relative to its subtrees gives three traversal types:
+
+| Traversal | Order |
+| --- | --- |
+| Preorder | Root → Left → Right |
+| Inorder | Left → Root → Right |
+| Postorder | Left → Right → Root |
+
+> **Tip:** Inorder traversal of a BST visits nodes in ascending sorted order — a handy way to "flatten" a BST back into a sorted list.
+
+![DFS - Preorder Traversal](<../assets/img/tree/dfs - preorder traversal.png>)
+
+![DFS - Inorder Traversal](<../assets/img/tree/dfs - inorder traversal.png>)
+
+![DFS - Postorder Traversal](<../assets/img/tree/dfs - postorder traversal.png>)
+
+#### Breadth-First Search (BFS)
+
+BFS explores all nodes at the current depth before moving to the next depth level, using a queue:
+
+1. Enqueue the root node
+2. While the queue isn't empty:
+   - Dequeue the node at the front
+   - Read the node's value
+   - Enqueue its left child, if it exists
+   - Enqueue its right child, if it exists
+
+![BFS Traversal Approach](<../assets/img/tree/bfs traversal approach.png>)
+
+![BFS Traversal](<../assets/img/tree/bfs traversal.png>)
+
+### Tree Traversal Big-O
+
+| Operation | Complexity |
+| --- | --- |
+| DFS (preorder / inorder / postorder) | O(n) |
+| BFS | O(n) |
+| Space (DFS, recursive) | O(h) — h = tree height, O(log n) balanced / O(n) worst case |
+| Space (BFS, queue) | O(w) — w = max tree width, up to O(n) |

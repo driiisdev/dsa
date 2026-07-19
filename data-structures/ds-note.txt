@@ -197,3 +197,81 @@
 - database indexing
 - caches
 
+---
+
+## tree
+- a tree is a hierarchical data structure that consists of nodes  connected by edges
+- a tree is a non-linear data structure, compared to arrays, linked lists, stacks and queues which are linear data structures.
+- in linear data structures, the time required to search is proportional to the size of the data set
+- trees however, owing to the non linear nature allow quicker and easier access to the data
+-  a tree will not contain any loops or cycles.
+
+**tree usage**
+- file systems for directory structure
+- a family tree
+- an organisation tree
+- dom
+- chat bots
+- abstract syntax trees
+
+### binary tree
+- a binary tree is a tree data structure in which each node has at most two children
+- they are referred to as left child and right child
+
+### binary search tree (bst)
+- the value of each left node must be smaller than the parent node
+- the value of each right node must be greater than the parent node
+- each node has at most two children
+
+**binary search tree operations**
+- insertion - to add a node to the tree
+- search - to find a node given its value
+- dfs & bfs - to visit all node in the tree
+- deletion - to remove a node given its value
+
+**binary search tree usage**
+- searching
+- sorting
+- to implement abstract data types such as lookup tables and priority queues
+
+### Tree traversal
+- visiting every node in the tree
+- a  hierarchical data structure like a tree can be traversed in different ways
+  . depth first search (dfs)
+  . breadth first search (bfs)
+
+### depth first search (dfs)
+- the dfs algorithm starts at the root node and explores as far as possible along each branch before backtracking
+- visit the root node, visit all the nodes in the left subtree and visit all the nodes in the right subtree
+- depending on the order in which we do this, there can be three types of dfs traversals
+  . preorder
+  . inorder
+  . postorder
+
+**preorder traversal**
+- read the data of the node
+- visit the left subtree
+- visit the right subtree
+
+**inorder**
+- visit the left subtree
+- read the data of the node
+- visit right subtree
+
+**postorder**
+- visit the left subtree
+- visit the right subtree
+- read the data of the node
+
+### Breadth first search (bfs)
+- explore all nodes at the present depth prior to moving on to the nodes at the next depth level
+
+**bfs traversal approach**
+- create a queue
+- enqueque the root node
+- as long as a node exists in the queue
+  . dequeue the node from the front
+  . read the node's value
+  . enqueue the node's left child if it exists
+  . enqueue the node's right child if it exists
+

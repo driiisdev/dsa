@@ -93,5 +93,45 @@ class BinarySearch {
 
 /** Usage */
 const binarySearch = new BinarySearch();
+
+// Basic case: target found mid-array
 console.log(binarySearch.iterative([1, 2, 3, 4, 5], 3)); // Output: 2
 console.log(binarySearch.recursive([1, 2, 3, 4, 5], 3)); // Output: 2
+
+// Not found
+console.log(binarySearch.iterative([1, 2, 3, 4, 5], 6)); // Output: -1
+console.log(binarySearch.recursive([1, 2, 3, 4, 5], 6)); // Output: -1
+
+// Edge case: empty array
+console.log(binarySearch.iterative([], 5)); // Output: -1
+console.log(binarySearch.recursive([], 5)); // Output: -1
+
+// Edge case: single-element array (match and no match)
+console.log(binarySearch.iterative([7], 7)); // Output: 0
+console.log(binarySearch.recursive([7], 7)); // Output: 0
+console.log(binarySearch.iterative([7], 3)); // Output: -1
+console.log(binarySearch.recursive([7], 3)); // Output: -1
+
+// Target outside the array's range on either end
+console.log(binarySearch.iterative([10, 20, 30], 5)); // Output: -1
+console.log(binarySearch.iterative([10, 20, 30], 40)); // Output: -1
+
+// Target at the first/last index
+console.log(binarySearch.iterative([1, 2, 3, 4, 5], 1)); // Output: 0
+console.log(binarySearch.iterative([1, 2, 3, 4, 5], 5)); // Output: 4
+
+// Even-length array (no exact middle element)
+console.log(binarySearch.iterative([1, 2, 3, 4], 1)); // Output: 0
+console.log(binarySearch.recursive([1, 2, 3, 4], 4)); // Output: 3
+
+// Duplicate elements: returns *an* index, not necessarily the first occurrence
+console.log(binarySearch.iterative([1, 2, 2, 2, 3], 2)); // Output: 2
+
+// Negative numbers
+console.log(binarySearch.iterative([-10, -5, 0, 5, 10], -5)); // Output: 1
+
+// Larger sorted array, iterative vs recursive agree
+const largeArr = Array.from({ length: 1000 }, (_, i) => i * 2); // [0, 2, 4, ..., 1998]
+console.log(binarySearch.iterative(largeArr, 1998)); // Output: 999
+console.log(binarySearch.recursive(largeArr, 1998)); // Output: 999
+console.log(binarySearch.iterative(largeArr, 999)); // Output: -1 (odd number, not present)
